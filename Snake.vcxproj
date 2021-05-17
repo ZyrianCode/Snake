@@ -152,6 +152,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
+    <None Include="x64\Debug\Bunifu_UI_v1.52.dll" />
+    <None Include="x64\Release\Bunifu_UI_v1.52.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.52">
@@ -169,6 +171,8 @@
     <ClCompile Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\Settings\Settings.cpp" />
+    <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
+    <ClCompile Include="x64\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.h">
@@ -207,6 +211,9 @@
   <ItemGroup>
     <Image Include="resources\32x32\return.png" />
     <Image Include="resources\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

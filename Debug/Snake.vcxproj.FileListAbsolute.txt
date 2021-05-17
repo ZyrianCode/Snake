@@ -1,0 +1,7 @@
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\Debug\Snake.vcxprojAssemblyReference.cache
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\Debug\Snake.vcxproj.GenerateResource.cache
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\Debug\Snake.vcxproj.CopyComplete
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\Debug\Snake.exe
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\Debug\Snake.Src.Zyrian.GUI.MainMenu.GUIMainMenu.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\Debug\Snake.Src.Zyrian.GUI.Settings.Settings.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\Debug\Snake.Src.Zyrian.GUI.Settings.Render.RenderSettings.resources
