@@ -42,6 +42,7 @@ namespace Snake {
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuRenderSettingsTopSidePnlDragControl;
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuRSFormDragControl;
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuRSTopSideLblDragControl;
+	private: Bunifu::Framework::UI::BunifuElipse^ bunifuRenderSettingsFormElipse;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -70,6 +71,7 @@ namespace Snake {
 			this->bunifuRenderSettingsTopSidePnlDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->bunifuRSFormDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->bunifuRSTopSideLblDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
+			this->bunifuRenderSettingsFormElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
 			this->pnlTopSideRS->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -133,6 +135,11 @@ namespace Snake {
 			this->bunifuRSTopSideLblDragControl->Horizontal = true;
 			this->bunifuRSTopSideLblDragControl->TargetControl = this->lblRenderSettingsMenu;
 			this->bunifuRSTopSideLblDragControl->Vertical = true;
+			// 
+			// bunifuRenderSettingsFormElipse
+			// 
+			this->bunifuRenderSettingsFormElipse->ElipseRadius = 25;
+			this->bunifuRenderSettingsFormElipse->TargetControl = this;
 			// 
 			// RenderSettings
 			// 

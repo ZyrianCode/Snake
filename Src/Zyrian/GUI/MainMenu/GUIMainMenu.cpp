@@ -1,5 +1,7 @@
 #include "GUIMainMenu.h"
 #include "Src/Zyrian/GUI/Settings/Settings.h"
+#include "Src/Zyrian/GUI/About/About.h"
+#include "Src/Zyrian/GUI/Author/Author.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -28,12 +30,16 @@ System::Void Snake::GUIMainMenu::btnMainMenuSettings_Click(System::Object^ sende
 
 System::Void Snake::GUIMainMenu::btnMainMenuAbout_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	return System::Void();
+	About^ about = gcnew About();
+	this->Hide();
+	about->Show();
 }
 
 System::Void Snake::GUIMainMenu::btnMainMenuAuthor_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	return System::Void();
+	Author^ author = gcnew Author();
+	this->Hide();
+	author->Show();
 }
 
 System::Void Snake::GUIMainMenu::btnMainMenuQuit_Click(System::Object^ sender, System::EventArgs^ e)

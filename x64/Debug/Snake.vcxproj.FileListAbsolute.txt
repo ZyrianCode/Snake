@@ -12,3 +12,5 @@ D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\S
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.vcxproj.GenerateResource.cache
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.vcxproj.CopyComplete
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.exe
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.Src.Zyrian.GUI.About.About.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.Src.Zyrian.GUI.Author.Author.resources

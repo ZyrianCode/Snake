@@ -35,6 +35,12 @@
     <ClCompile Include="x64\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Zyrian\GUI\About\About.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Zyrian\GUI\Author\Author.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.h">
@@ -44,6 +50,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\About\About.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\Author\Author.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

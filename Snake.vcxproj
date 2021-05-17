@@ -78,7 +78,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -97,7 +97,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -168,6 +168,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Zyrian\GUI\About\About.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\Author\Author.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\Settings\Settings.cpp" />
@@ -175,6 +177,12 @@
     <ClCompile Include="x64\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Zyrian\GUI\About\About.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\Author\Author.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -186,6 +194,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Src\Zyrian\GUI\About\About.resx">
+      <DependentUpon>Src\Zyrian\GUI\About\About.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Snake.About.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Snake.About.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\Zyrian\GUI\Author\Author.resx">
+      <DependentUpon>Src\Zyrian\GUI\Author\Author.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Snake.Author.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Snake.Author.resources</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.resx">
       <DependentUpon>Src\Zyrian\GUI\MainMenu\GUIMainMenu.h</DependentUpon>
     </EmbeddedResource>
