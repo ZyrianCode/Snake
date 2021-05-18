@@ -1,3 +1,5 @@
+  Snake.Src.Zyrian.Game.Game.resources - Embedded, ContainedInManifestFile, 
+  Snake.Src.Zyrian.GUI.InGameGUI.InGameGUI.resources - Embedded, ContainedInManifestFile, 
   Snake.Src.Zyrian.GUI.MainMenu.GUIMainMenu.resources - Embedded, ContainedInManifestFile, 
   Snake.About.resources - Embedded, ContainedInManifestFile, 
   Snake.Author.resources - Embedded, ContainedInManifestFile, 
@@ -24,6 +26,12 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class Snake.Game: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class Snake.InGameGUI: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class Snake.About: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -36,14 +36,19 @@ namespace Snake {
 		}
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGUIMainMenuDragControl;
 	private: System::Windows::Forms::Panel^ pnlGUIMainMenuTopSide;
-	private: System::Windows::Forms::Panel^ pnlMainMenuNewGame;
-	private: System::Windows::Forms::Button^ btnMainMenuNewGame;
+	private: System::Windows::Forms::Panel^ pnlMainMenuStartGame;
+	private: System::Windows::Forms::Button^ btnMainMenuStartGame;
+
+
 
 	private: Bunifu::Framework::UI::BunifuElipse^ bunifuGUIMainMenuElipse;
-	private: System::Windows::Forms::Label^ lblMainMenuNewGame;
-	private: Bunifu::Framework::UI::BunifuElipse^ bunifuMainMenuNewGamebtnElipse;
-	private: Bunifu::Framework::UI::BunifuElipse^ bunifuMainMenuNewGamelblElipse;
-	private: Bunifu::Framework::UI::BunifuElipse^ bunifuMainMenuNewGamepnlElipse;
+	private: System::Windows::Forms::Label^ lblMainMenuStartGame;
+
+	private: Bunifu::Framework::UI::BunifuElipse^ bunifuMainMenuStartGamebtnElipse;
+	private: Bunifu::Framework::UI::BunifuElipse^ bunifuMainMenuStartGamepnlElipse;
+
+
+
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGUIMainMenuTopSidepnlDragControl;
 	private: System::Windows::Forms::Panel^ pnlMainMenuQuit;
 	private: System::Windows::Forms::Label^ lblMainMenuQuit;
@@ -98,12 +103,11 @@ namespace Snake {
 			this->pnlGUIMainMenuTopSide = (gcnew System::Windows::Forms::Panel());
 			this->lblGUIMainMenu = (gcnew System::Windows::Forms::Label());
 			this->bunifuGUIMainMenuElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
-			this->pnlMainMenuNewGame = (gcnew System::Windows::Forms::Panel());
-			this->lblMainMenuNewGame = (gcnew System::Windows::Forms::Label());
-			this->btnMainMenuNewGame = (gcnew System::Windows::Forms::Button());
-			this->bunifuMainMenuNewGamebtnElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
-			this->bunifuMainMenuNewGamelblElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
-			this->bunifuMainMenuNewGamepnlElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
+			this->pnlMainMenuStartGame = (gcnew System::Windows::Forms::Panel());
+			this->lblMainMenuStartGame = (gcnew System::Windows::Forms::Label());
+			this->btnMainMenuStartGame = (gcnew System::Windows::Forms::Button());
+			this->bunifuMainMenuStartGamebtnElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
+			this->bunifuMainMenuStartGamepnlElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
 			this->bunifuGUIMainMenuTopSidepnlDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->pnlMainMenuSettings = (gcnew System::Windows::Forms::Panel());
 			this->lblMainMenuSettings = (gcnew System::Windows::Forms::Label());
@@ -129,7 +133,7 @@ namespace Snake {
 			this->bunifuMainMenuQuitpnlElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
 			this->bunifuGMMTopSideLblDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->pnlGUIMainMenuTopSide->SuspendLayout();
-			this->pnlMainMenuNewGame->SuspendLayout();
+			this->pnlMainMenuStartGame->SuspendLayout();
 			this->pnlMainMenuSettings->SuspendLayout();
 			this->pnlMainMenuAbout->SuspendLayout();
 			this->pnlMainMenuAuthor->SuspendLayout();
@@ -170,62 +174,57 @@ namespace Snake {
 			this->bunifuGUIMainMenuElipse->ElipseRadius = 25;
 			this->bunifuGUIMainMenuElipse->TargetControl = this;
 			// 
-			// pnlMainMenuNewGame
+			// pnlMainMenuStartGame
 			// 
-			this->pnlMainMenuNewGame->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)),
+			this->pnlMainMenuStartGame->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)), static_cast<System::Int32>(static_cast<System::Byte>(59)));
-			this->pnlMainMenuNewGame->Controls->Add(this->lblMainMenuNewGame);
-			this->pnlMainMenuNewGame->Controls->Add(this->btnMainMenuNewGame);
-			this->pnlMainMenuNewGame->Location = System::Drawing::Point(11, 74);
-			this->pnlMainMenuNewGame->Name = L"pnlMainMenuNewGame";
-			this->pnlMainMenuNewGame->Size = System::Drawing::Size(124, 132);
-			this->pnlMainMenuNewGame->TabIndex = 1;
+			this->pnlMainMenuStartGame->Controls->Add(this->lblMainMenuStartGame);
+			this->pnlMainMenuStartGame->Controls->Add(this->btnMainMenuStartGame);
+			this->pnlMainMenuStartGame->Location = System::Drawing::Point(11, 74);
+			this->pnlMainMenuStartGame->Name = L"pnlMainMenuStartGame";
+			this->pnlMainMenuStartGame->Size = System::Drawing::Size(124, 132);
+			this->pnlMainMenuStartGame->TabIndex = 1;
 			// 
-			// lblMainMenuNewGame
+			// lblMainMenuStartGame
 			// 
-			this->lblMainMenuNewGame->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->lblMainMenuNewGame->ForeColor = System::Drawing::SystemColors::ActiveCaption;
-			this->lblMainMenuNewGame->Location = System::Drawing::Point(21, 95);
-			this->lblMainMenuNewGame->Name = L"lblMainMenuNewGame";
-			this->lblMainMenuNewGame->Size = System::Drawing::Size(84, 22);
-			this->lblMainMenuNewGame->TabIndex = 1;
-			this->lblMainMenuNewGame->Text = L"New Game";
-			this->lblMainMenuNewGame->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->lblMainMenuStartGame->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->lblMainMenuStartGame->ForeColor = System::Drawing::SystemColors::ActiveCaption;
+			this->lblMainMenuStartGame->Location = System::Drawing::Point(16, 95);
+			this->lblMainMenuStartGame->Name = L"lblMainMenuStartGame";
+			this->lblMainMenuStartGame->Size = System::Drawing::Size(92, 22);
+			this->lblMainMenuStartGame->TabIndex = 1;
+			this->lblMainMenuStartGame->Text = L"Start Game";
+			this->lblMainMenuStartGame->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// btnMainMenuNewGame
+			// btnMainMenuStartGame
 			// 
-			this->btnMainMenuNewGame->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			this->btnMainMenuStartGame->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(38)), static_cast<System::Int32>(static_cast<System::Byte>(50)));
-			this->btnMainMenuNewGame->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			this->btnMainMenuStartGame->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(38)), static_cast<System::Int32>(static_cast<System::Byte>(50)));
-			this->btnMainMenuNewGame->FlatAppearance->BorderSize = 0;
-			this->btnMainMenuNewGame->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnMainMenuNewGame->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->btnMainMenuNewGame->ForeColor = System::Drawing::SystemColors::ActiveCaption;
-			this->btnMainMenuNewGame->Location = System::Drawing::Point(13, 12);
-			this->btnMainMenuNewGame->Name = L"btnMainMenuNewGame";
-			this->btnMainMenuNewGame->Size = System::Drawing::Size(100, 80);
-			this->btnMainMenuNewGame->TabIndex = 0;
-			this->btnMainMenuNewGame->Text = L"New Game";
-			this->btnMainMenuNewGame->UseVisualStyleBackColor = false;
-			this->btnMainMenuNewGame->Click += gcnew System::EventHandler(this, &GUIMainMenu::btnMainMenuNewGame_Click);
+			this->btnMainMenuStartGame->FlatAppearance->BorderSize = 0;
+			this->btnMainMenuStartGame->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnMainMenuStartGame->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->btnMainMenuStartGame->ForeColor = System::Drawing::SystemColors::ActiveCaption;
+			this->btnMainMenuStartGame->Location = System::Drawing::Point(13, 12);
+			this->btnMainMenuStartGame->Name = L"btnMainMenuStartGame";
+			this->btnMainMenuStartGame->Size = System::Drawing::Size(100, 80);
+			this->btnMainMenuStartGame->TabIndex = 0;
+			this->btnMainMenuStartGame->Text = L"Start Game";
+			this->btnMainMenuStartGame->UseVisualStyleBackColor = false;
+			this->btnMainMenuStartGame->Click += gcnew System::EventHandler(this, &GUIMainMenu::btnMainMenuStartGame_Click);
 			// 
-			// bunifuMainMenuNewGamebtnElipse
+			// bunifuMainMenuStartGamebtnElipse
 			// 
-			this->bunifuMainMenuNewGamebtnElipse->ElipseRadius = 20;
-			this->bunifuMainMenuNewGamebtnElipse->TargetControl = this->btnMainMenuNewGame;
+			this->bunifuMainMenuStartGamebtnElipse->ElipseRadius = 20;
+			this->bunifuMainMenuStartGamebtnElipse->TargetControl = this->btnMainMenuStartGame;
 			// 
-			// bunifuMainMenuNewGamelblElipse
+			// bunifuMainMenuStartGamepnlElipse
 			// 
-			this->bunifuMainMenuNewGamelblElipse->ElipseRadius = 15;
-			this->bunifuMainMenuNewGamelblElipse->TargetControl = this->lblMainMenuNewGame;
-			// 
-			// bunifuMainMenuNewGamepnlElipse
-			// 
-			this->bunifuMainMenuNewGamepnlElipse->ElipseRadius = 20;
-			this->bunifuMainMenuNewGamepnlElipse->TargetControl = this->pnlMainMenuNewGame;
+			this->bunifuMainMenuStartGamepnlElipse->ElipseRadius = 20;
+			this->bunifuMainMenuStartGamepnlElipse->TargetControl = this->pnlMainMenuStartGame;
 			// 
 			// bunifuGUIMainMenuTopSidepnlDragControl
 			// 
@@ -470,15 +469,16 @@ namespace Snake {
 			this->Controls->Add(this->pnlMainMenuAuthor);
 			this->Controls->Add(this->pnlMainMenuAbout);
 			this->Controls->Add(this->pnlMainMenuSettings);
-			this->Controls->Add(this->pnlMainMenuNewGame);
+			this->Controls->Add(this->pnlMainMenuStartGame);
 			this->Controls->Add(this->pnlGUIMainMenuTopSide);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"GUIMainMenu";
 			this->Opacity = 0.97;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"GUIMainMenu";
+			this->Load += gcnew System::EventHandler(this, &GUIMainMenu::GUIMainMenu_Load);
 			this->pnlGUIMainMenuTopSide->ResumeLayout(false);
-			this->pnlMainMenuNewGame->ResumeLayout(false);
+			this->pnlMainMenuStartGame->ResumeLayout(false);
 			this->pnlMainMenuSettings->ResumeLayout(false);
 			this->pnlMainMenuAbout->ResumeLayout(false);
 			this->pnlMainMenuAuthor->ResumeLayout(false);
@@ -488,10 +488,12 @@ namespace Snake {
 		}
 #pragma endregion
 
-	private: System::Void btnMainMenuNewGame_Click(System::Object^ sender, System::EventArgs^ e);
+	
+	private: System::Void btnMainMenuStartGame_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMainMenuSettings_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMainMenuAbout_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMainMenuAuthor_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMainMenuQuit_Click(System::Object^ sender, System::EventArgs^ e);
-	};
+	private: System::Void GUIMainMenu_Load(System::Object^ sender, System::EventArgs^ e);
+};
 }

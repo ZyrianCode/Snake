@@ -168,8 +168,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Zyrian\Game\Game.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\About\About.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\Author\Author.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\Settings\Settings.cpp" />
@@ -177,10 +179,16 @@
     <ClCompile Include="x64\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Zyrian\Game\Game.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\About\About.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\Author\Author.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.h">
@@ -194,6 +202,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Src\Zyrian\Game\Game.resx">
+      <DependentUpon>Src\Zyrian\Game\Game.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src\Zyrian\GUI\About\About.resx">
       <DependentUpon>Src\Zyrian\GUI\About\About.h</DependentUpon>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Snake.About.resources</LogicalName>
@@ -203,6 +214,9 @@
       <DependentUpon>Src\Zyrian\GUI\Author\Author.h</DependentUpon>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Snake.Author.resources</LogicalName>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Snake.Author.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.resx">
+      <DependentUpon>Src\Zyrian\GUI\InGameGUI\InGameGUI.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.resx">
       <DependentUpon>Src\Zyrian\GUI\MainMenu\GUIMainMenu.h</DependentUpon>

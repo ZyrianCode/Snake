@@ -3,6 +3,8 @@
 #include "Src/Zyrian/GUI/About/About.h"
 #include "Src/Zyrian/GUI/Author/Author.h"
 
+#include "Src/Zyrian/Game/Game.h"
+
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -16,9 +18,11 @@ void main(array<String^>^ args) {
 
 }
 
-System::Void Snake::GUIMainMenu::btnMainMenuNewGame_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void Snake::GUIMainMenu::btnMainMenuStartGame_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	return System::Void();
+	Game^ game = gcnew Game();
+	this->Hide();
+	game->Show();
 }
 
 System::Void Snake::GUIMainMenu::btnMainMenuSettings_Click(System::Object^ sender, System::EventArgs^ e)
@@ -45,4 +49,10 @@ System::Void Snake::GUIMainMenu::btnMainMenuAuthor_Click(System::Object^ sender,
 System::Void Snake::GUIMainMenu::btnMainMenuQuit_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	Application::Exit();
+}
+
+System::Void Snake::GUIMainMenu::GUIMainMenu_Load(System::Object^ sender, System::EventArgs^ e)
+{
+	Game^ game = gcnew Game();
+	game->Close();
 }
