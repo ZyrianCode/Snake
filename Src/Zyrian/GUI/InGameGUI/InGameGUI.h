@@ -499,6 +499,7 @@ namespace Snake {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"InGameGUI";
 			this->Shown += gcnew System::EventHandler(this, &InGameGUI::InGameGUI_Shown);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &InGameGUI::InGameGUI_KeyDown);
 			this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &InGameGUI::InGameGUI_KeyPress);
 			this->pnlInGameGUITopSide->ResumeLayout(false);
 			this->pnlMenuIGNewGame->ResumeLayout(false);
@@ -524,5 +525,6 @@ namespace Snake {
 	public: System::Void InGameGUIClose();
 	//private: System::Void Snake::InGameGUI::OnInGameGui_Close(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
 	private: System::Void InGameGUI_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e);
+	private: System::Void InGameGUI_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 };
 }

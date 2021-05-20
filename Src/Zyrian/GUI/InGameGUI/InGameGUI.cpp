@@ -71,5 +71,14 @@ System::Void Snake::InGameGUI::InGameGUI_KeyPress(System::Object^ sender, System
 	}
 }
 
+System::Void Snake::InGameGUI::InGameGUI_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
+{
+	if (e->KeyCode.ToString() == "Escape")
+	{
+		this->Hide();
+		this->isInGameGUIVisible = false;
+	}
+}
+
 
 
