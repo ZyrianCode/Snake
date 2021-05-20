@@ -2,7 +2,6 @@
 #include "Src/Zyrian/GUI/Settings/Settings.h"
 #include "Src/Zyrian/GUI/About/About.h"
 #include "Src/Zyrian/GUI/Author/Author.h"
-
 #include "Src/Zyrian/Game/Game.h"
 
 using namespace System;
@@ -21,8 +20,9 @@ void main(array<String^>^ args) {
 System::Void Snake::GUIMainMenu::btnMainMenuStartGame_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	Game^ game = gcnew Game();
-	this->Hide();
 	game->Show();
+	game->IsRunning = true;
+	this->Hide();
 }
 
 System::Void Snake::GUIMainMenu::btnMainMenuSettings_Click(System::Object^ sender, System::EventArgs^ e)
@@ -51,8 +51,3 @@ System::Void Snake::GUIMainMenu::btnMainMenuQuit_Click(System::Object^ sender, S
 	Application::Exit();
 }
 
-System::Void Snake::GUIMainMenu::GUIMainMenu_Load(System::Object^ sender, System::EventArgs^ e)
-{
-	Game^ game = gcnew Game();
-	game->Close();
-}

@@ -1,5 +1,4 @@
 #include "InGameGUI.h"
-
 #include "Src/Zyrian/Game/Game.h"
 #include "Src/Zyrian/GUI/About/About.h"
 #include "Src/Zyrian/GUI/Author/Author.h"
@@ -8,7 +7,8 @@
 
 System::Void Snake::InGameGUI::btnMenuIGBackToGame_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	this->Close();
+	this->Hide();
+	this->isInGameGUIVisible = false;
 }
 
 System::Void Snake::InGameGUI::btnMenuIGNewGame_Click(System::Object^ sender, System::EventArgs^ e)
@@ -19,39 +19,57 @@ System::Void Snake::InGameGUI::btnMenuIGNewGame_Click(System::Object^ sender, Sy
 System::Void Snake::InGameGUI::btnMenuIGSettings_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	Settings^ settings = gcnew Settings();
-	this->Hide();
-	settings->ShowDialog();
+	settings->Show();
 }
 
 System::Void Snake::InGameGUI::btnMenuIGBackToMenu_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	GUIMainMenu^ guiMainMenu = gcnew GUIMainMenu();
-	
-	this->Close();
-	Game^ game = gcnew Game();
 	guiMainMenu->Show();
-	game->Activate();
-	game->Close();
+	this->Close();
+	this->isInGameGUIVisible = false;
 }
 
 System::Void Snake::InGameGUI::btnMenuIGAbout_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	About^ about = gcnew About();
-	this->Hide();
-	about->ShowDialog();
+	about->Show();
 }
 
 System::Void Snake::InGameGUI::btnMenuIGAuthor_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	Author^ author = gcnew Author();
-	this->Hide();
-	author->ShowDialog();
+	author->Show();
 }
 
-System::Void Snake::InGameGUI::InGameGUI_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
+
+
+System::Void Snake::InGameGUI::InGameGUI_Shown(System::Object^ sender, System::EventArgs^ e)
 {
-	if (e->KeyCode.ToString() == "Escape")
+	this->isInGameGUIVisible = true;
+}
+
+System::Void Snake::InGameGUI::InGameGUIOpen()
+{
+	double OnOpenOpacity = 0.97;
+	this->Opacity = OnOpenOpacity;
+	this->BringToFront();
+}
+
+System::Void Snake::InGameGUI::InGameGUIClose()
+{
+	double OnCloseOpacity = 0.00;
+	this->Opacity = OnCloseOpacity;
+}
+
+System::Void Snake::InGameGUI::InGameGUI_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e)
+{
+	if (e->KeyChar.ToString() == "Esc")
 	{
-		this->Close();
+		this->Hide();
+		this->isInGameGUIVisible = false;
 	}
 }
+
+
+

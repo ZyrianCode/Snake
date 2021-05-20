@@ -23,6 +23,7 @@ namespace Snake {
 			//
 		}
 
+		static Boolean isInGameGUIVisible;
 	protected:
 		/// <summary>
 		/// Освободить все используемые ресурсы.
@@ -492,11 +493,13 @@ namespace Snake {
 			this->Controls->Add(this->pnlMenuIGNewGame);
 			this->Controls->Add(this->pnlInGameGUITopSide);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->KeyPreview = true;
 			this->Name = L"InGameGUI";
 			this->Opacity = 0.97;
-			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"InGameGUI";
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &InGameGUI::InGameGUI_KeyDown);
+			this->Shown += gcnew System::EventHandler(this, &InGameGUI::InGameGUI_Shown);
+			this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &InGameGUI::InGameGUI_KeyPress);
 			this->pnlInGameGUITopSide->ResumeLayout(false);
 			this->pnlMenuIGNewGame->ResumeLayout(false);
 			this->pnlMenuIGSettings->ResumeLayout(false);
@@ -514,6 +517,12 @@ namespace Snake {
 	private: System::Void btnMenuIGBackToMenu_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMenuIGAbout_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMenuIGAuthor_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void InGameGUI_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
+
+	public: System::Void InGameGUI_Shown(System::Object^ sender, System::EventArgs^ e);
+
+	public: System::Void InGameGUIOpen();
+	public: System::Void InGameGUIClose();
+	//private: System::Void Snake::InGameGUI::OnInGameGui_Close(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
+	private: System::Void InGameGUI_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e);
 };
 }

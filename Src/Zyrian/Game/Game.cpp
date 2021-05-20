@@ -3,11 +3,21 @@
 
 System::Void Snake::Game::Game_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
 {
-	if (e->KeyCode.ToString() == "Escape")
-	{
-		//play = false
-		InGameGUI^ inGameGUI = gcnew InGameGUI();
-		inGameGUI->ShowDialog();
-		inGameGUI->Activate();
-	}
+    InGameGUI^ inGameGUI = gcnew InGameGUI();
+    if (!inGameGUI->isInGameGUIVisible && e->KeyCode.ToString() == "Escape")
+    {
+        inGameGUI->Show();
+    }
+    else if (inGameGUI->isInGameGUIVisible && e->KeyCode.ToString() == "Escape")
+    {
+        inGameGUI->Activate();
+        inGameGUI->BringToFront();
+    }
+    inGameGUI->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Game::GameOnInGameGui_Close);
+}
+
+System::Void Snake::Game::GameOnInGameGui_Close(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e)
+{
+    this->IsRunning = false;
+    this->Close();
 }

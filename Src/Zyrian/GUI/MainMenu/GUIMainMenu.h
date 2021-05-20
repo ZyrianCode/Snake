@@ -476,7 +476,6 @@ namespace Snake {
 			this->Opacity = 0.97;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"GUIMainMenu";
-			this->Load += gcnew System::EventHandler(this, &GUIMainMenu::GUIMainMenu_Load);
 			this->pnlGUIMainMenuTopSide->ResumeLayout(false);
 			this->pnlMainMenuStartGame->ResumeLayout(false);
 			this->pnlMainMenuSettings->ResumeLayout(false);
@@ -494,6 +493,6 @@ namespace Snake {
 	private: System::Void btnMainMenuAbout_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMainMenuAuthor_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMainMenuQuit_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void GUIMainMenu_Load(System::Object^ sender, System::EventArgs^ e);
+	
 };
 }

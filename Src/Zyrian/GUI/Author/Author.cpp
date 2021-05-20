@@ -6,16 +6,14 @@
 System::Void Snake::Author::btnBackAuthor_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	Game^ game = gcnew Game();
-	if (game->Visible)
+	if (game->IsRunning)
 	{
 		this->Close();
-		InGameGUI^ inGameGUI = gcnew InGameGUI();
-		inGameGUI->ShowDialog();
 	}
 	else
 	{
 		GUIMainMenu^ guiMainMenu = gcnew GUIMainMenu();
 		this->Close();
-		guiMainMenu->ShowDialog();
+		guiMainMenu->Show();
 	}
 }

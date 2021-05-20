@@ -29,9 +29,17 @@ Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c5619
 Class Snake.Game: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean IsRunning : Public, Static
 Class Snake.InGameGUI: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean isInGameGUIVisible : Public, Static
+  Methods:
+    InGameGUI_Shown(Object, EventArgs): PrivateScope, Public, HideBySig
+    InGameGUIOpen(): PrivateScope, Public, HideBySig
+    InGameGUIClose(): PrivateScope, Public, HideBySig
 Class Snake.About: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
