@@ -78,7 +78,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -97,7 +97,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -116,7 +116,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -135,7 +135,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\FormsApplications\Snake\Snake\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -169,35 +169,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Zyrian\Game\Game.cpp" />
-    <ClCompile Include="Src\Zyrian\GUI\About\About.cpp" />
-    <ClCompile Include="Src\Zyrian\GUI\Author\Author.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\About\About.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Author\Author.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.cpp" />
-    <ClCompile Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.cpp" />
-    <ClCompile Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.cpp" />
-    <ClCompile Include="Src\Zyrian\GUI\Settings\Settings.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.cpp" />
     <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
-    <ClCompile Include="x64\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Zyrian\Game\Game.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\About\About.h">
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\About\About.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\Author\Author.h">
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Author\Author.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.h">
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\Settings\Settings.h">
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -205,31 +200,44 @@
     <EmbeddedResource Include="Src\Zyrian\Game\Game.resx">
       <DependentUpon>Src\Zyrian\Game\Game.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Src\Zyrian\GUI\About\About.resx">
-      <DependentUpon>Src\Zyrian\GUI\About\About.h</DependentUpon>
+    <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\About\About.resx">
+      <DependentUpon>Src\Zyrian\GUI\MainGUI\About\About.h</DependentUpon>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Snake.About.resources</LogicalName>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Snake.About.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Snake.About.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Snake.About.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Src\Zyrian\GUI\Author\Author.resx">
-      <DependentUpon>Src\Zyrian\GUI\Author\Author.h</DependentUpon>
+    <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Author\Author.resx">
+      <DependentUpon>Src\Zyrian\GUI\MainGUI\Author\Author.h</DependentUpon>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Snake.Author.resources</LogicalName>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Snake.Author.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Snake.Author.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Snake.Author.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.resx">
       <DependentUpon>Src\Zyrian\GUI\InGameGUI\InGameGUI.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.resx">
-      <DependentUpon>Src\Zyrian\GUI\MainMenu\GUIMainMenu.h</DependentUpon>
+    <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.resx">
+      <DependentUpon>Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.resx">
-      <DependentUpon>Src\Zyrian\GUI\Settings\Render\RenderSettings.h</DependentUpon>
-      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Snake.RenderSettings.resources</LogicalName>
-      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Snake.RenderSettings.resources</LogicalName>
-      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Snake.RenderSettings.resources</LogicalName>
-      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Snake.RenderSettings.resources</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Src\Zyrian\GUI\Settings\Settings.resx">
-      <DependentUpon>Src\Zyrian\GUI\Settings\Settings.h</DependentUpon>
+    <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.resx">
+      <DependentUpon>Src\Zyrian\GUI\MainGUI\Settings\Settings.h</DependentUpon>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

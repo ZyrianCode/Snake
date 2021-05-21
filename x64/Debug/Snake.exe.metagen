@@ -1,9 +1,8 @@
   Snake.Src.Zyrian.Game.Game.resources - Embedded, ContainedInManifestFile, 
   Snake.Src.Zyrian.GUI.InGameGUI.InGameGUI.resources - Embedded, ContainedInManifestFile, 
-  Snake.Src.Zyrian.GUI.MainMenu.GUIMainMenu.resources - Embedded, ContainedInManifestFile, 
+  Snake.Src.Zyrian.GUI.MainGUI.MainMenu.GUIMainMenu.resources - Embedded, ContainedInManifestFile, 
   Snake.About.resources - Embedded, ContainedInManifestFile, 
   Snake.Author.resources - Embedded, ContainedInManifestFile, 
-  Snake.RenderSettings.resources - Embedded, ContainedInManifestFile, 
   Snake.Settings.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly Snake, Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
@@ -50,8 +49,5 @@ Class Snake.Author: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class Snake.Settings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class Snake.RenderSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

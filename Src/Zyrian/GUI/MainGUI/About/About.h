@@ -63,8 +63,8 @@ namespace Snake {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(About::typeid));
 			this->pnlTopSideAbout = (gcnew System::Windows::Forms::Panel());
-			this->lblTopSideAbout = (gcnew System::Windows::Forms::Label());
 			this->btnBackAbout = (gcnew System::Windows::Forms::Button());
+			this->lblTopSideAbout = (gcnew System::Windows::Forms::Label());
 			this->bunifuAboutFormElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
 			this->bunifuAboutTopSidePnlDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->bunifuAboutFormDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
@@ -83,18 +83,6 @@ namespace Snake {
 			this->pnlTopSideAbout->Size = System::Drawing::Size(460, 50);
 			this->pnlTopSideAbout->TabIndex = 0;
 			// 
-			// lblTopSideAbout
-			// 
-			this->lblTopSideAbout->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->lblTopSideAbout->ForeColor = System::Drawing::SystemColors::ActiveCaption;
-			this->lblTopSideAbout->Location = System::Drawing::Point(166, 13);
-			this->lblTopSideAbout->Name = L"lblTopSideAbout";
-			this->lblTopSideAbout->Size = System::Drawing::Size(124, 23);
-			this->lblTopSideAbout->TabIndex = 0;
-			this->lblTopSideAbout->Text = L"About Game";
-			this->lblTopSideAbout->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
 			// btnBackAbout
 			// 
 			this->btnBackAbout->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnBackAbout.BackgroundImage")));
@@ -111,6 +99,18 @@ namespace Snake {
 			this->btnBackAbout->TabIndex = 1;
 			this->btnBackAbout->UseVisualStyleBackColor = true;
 			this->btnBackAbout->Click += gcnew System::EventHandler(this, &About::btnBackAbout_Click);
+			// 
+			// lblTopSideAbout
+			// 
+			this->lblTopSideAbout->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lblTopSideAbout->ForeColor = System::Drawing::SystemColors::ActiveCaption;
+			this->lblTopSideAbout->Location = System::Drawing::Point(166, 13);
+			this->lblTopSideAbout->Name = L"lblTopSideAbout";
+			this->lblTopSideAbout->Size = System::Drawing::Size(124, 23);
+			this->lblTopSideAbout->TabIndex = 0;
+			this->lblTopSideAbout->Text = L"About Game";
+			this->lblTopSideAbout->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// bunifuAboutFormElipse
 			// 
@@ -147,15 +147,18 @@ namespace Snake {
 			this->ClientSize = System::Drawing::Size(460, 261);
 			this->Controls->Add(this->pnlTopSideAbout);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->KeyPreview = true;
 			this->Name = L"About";
 			this->Opacity = 0.97;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"About";
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &About::About_KeyDown);
 			this->pnlTopSideAbout->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void btnBackAbout_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void About_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 };
 }

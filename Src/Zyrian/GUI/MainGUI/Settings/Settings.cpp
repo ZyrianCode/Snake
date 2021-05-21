@@ -1,21 +1,16 @@
 #include "Settings.h"
-#include "Src/Zyrian/GUI/MainMenu/GUIMainMenu.h"
+#include "Src/Zyrian/GUI/MainGUI/MainMenu/GUIMainMenu.h"
 #include "Src/Zyrian/GUI/InGameGUI/InGameGUI.h"
-#include "Render/RenderSettings.h"
-
 #include "Src/Zyrian/Game/Game.h"
+//#include "../../../Game/Game.h"
+//#include "../MainMenu/GUIMainMenu.h"
+//#include "../../InGameGUI/InGameGUI.h"
 
 System::Void Snake::Settings::btnSettingsConfig_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	return System::Void();
 }
 
-System::Void Snake::Settings::btnRenderSettings_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	RenderSettings^ renderSettings = gcnew RenderSettings();
-	this->Close();
-	renderSettings->Show();
-}
 
 System::Void Snake::Settings::btnGameSettings_Click(System::Object^ sender, System::EventArgs^ e)
 {
@@ -54,5 +49,20 @@ System::Void Snake::Settings::btnBackSettings_Click(System::Object^ sender, Syst
 		GUIMainMenu^ guiMainMenu = gcnew GUIMainMenu();
 		this->Close();
 		guiMainMenu->Show();
+	}
+}
+
+System::Void Snake::Settings::Settings_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
+{
+	InGameGUI^ inGameGUI = gcnew InGameGUI();
+	if (inGameGUI->isInGameGUIVisible && e->KeyCode.ToString() == "Escape")
+	{
+		this->Close();
+	}
+	else if (!inGameGUI->isInGameGUIVisible && e->KeyCode.ToString() == "Escape")
+	{
+		GUIMainMenu^ guiMainMenu = gcnew GUIMainMenu();
+		guiMainMenu->Show();
+		this->Close();
 	}
 }

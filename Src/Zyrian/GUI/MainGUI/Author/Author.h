@@ -165,17 +165,19 @@ namespace Snake {
 			this->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 8.249999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->KeyPreview = true;
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Author";
 			this->Opacity = 0.97;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Author";
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Author::Author_KeyDown);
 			this->pnlTopSideAuthor->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void btnBackAuthor_Click(System::Object^ sender, System::EventArgs^ e);
-	
+	private: System::Void btnBackAuthor_Click(System::Object^ sender, System::EventArgs^ e);	
+	private: System::Void Author_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 };
 }

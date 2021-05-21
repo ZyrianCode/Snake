@@ -1,7 +1,11 @@
 #include "GUIMainMenu.h"
-#include "Src/Zyrian/GUI/Settings/Settings.h"
-#include "Src/Zyrian/GUI/About/About.h"
-#include "Src/Zyrian/GUI/Author/Author.h"
+//#include "../../../Game/Game.h"
+//#include "../Settings/Settings.h"
+//#include "../About/About.h"
+//#include "../Author/Author.h"
+#include "Src/Zyrian/GUI/MainGUI/Settings/Settings.h"
+#include "Src/Zyrian/GUI/MainGUI/About/About.h"
+#include "Src/Zyrian/GUI/MainGUI/Author/Author.h"
 #include "Src/Zyrian/Game/Game.h"
 
 using namespace System;

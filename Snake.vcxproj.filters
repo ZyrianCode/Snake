@@ -20,25 +20,19 @@
     <None Include="x64\Release\Bunifu_UI_v1.52.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.cpp">
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Zyrian\GUI\Settings\Settings.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.cpp">
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="x64\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp">
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\About\About.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Zyrian\GUI\About\About.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Zyrian\GUI\Author\Author.cpp">
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Author\Author.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.cpp">
@@ -49,19 +43,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Zyrian\GUI\MainMenu\GUIMainMenu.h">
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\Settings\Settings.h">
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\Settings\Render\RenderSettings.h">
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\About\About.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\About\About.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Zyrian\GUI\Author\Author.h">
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Author\Author.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.h">

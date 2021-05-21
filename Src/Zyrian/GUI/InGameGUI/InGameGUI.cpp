@@ -1,9 +1,13 @@
 #include "InGameGUI.h"
 #include "Src/Zyrian/Game/Game.h"
-#include "Src/Zyrian/GUI/About/About.h"
-#include "Src/Zyrian/GUI/Author/Author.h"
-#include "Src/Zyrian/GUI/MainMenu/GUIMainMenu.h"
-#include "Src/Zyrian/GUI/Settings/Settings.h"
+#include "Src/Zyrian/GUI/MainGUI/About/About.h"
+#include "Src/Zyrian/GUI/MainGUI/Author/Author.h"
+#include "Src/Zyrian/GUI/MainGUI/MainMenu/GUIMainMenu.h"
+#include "Src/Zyrian/GUI/MainGUI/Settings/Settings.h"
+//#include "../MainGUI/Settings/Settings.h"
+//#include "../MainGUI/MainMenu/GUIMainMenu.h"
+//#include "../MainGUI/About/About.h"
+//#include "../MainGUI/Author/Author.h"
 
 System::Void Snake::InGameGUI::btnMenuIGBackToGame_Click(System::Object^ sender, System::EventArgs^ e)
 {

@@ -51,9 +51,9 @@ namespace Snake {
 	private: System::Windows::Forms::Panel^ pnlGameSettings;
 	private: System::Windows::Forms::Label^ lblGameSettings;
 	private: System::Windows::Forms::Button^ btnGameSettings;
-	private: System::Windows::Forms::Panel^ pnlRenderSettings;
-	private: System::Windows::Forms::Label^ lblRenderSettings;
-	private: System::Windows::Forms::Button^ btnRenderSettings;
+
+
+
 	private: System::Windows::Forms::Button^ btnDoneSettings;
 	private: Bunifu::Framework::UI::BunifuElipse^ bunifuSettingsFormElipse;
 	private: Bunifu::Framework::UI::BunifuElipse^ bunifuConfigSettingsBtnElipse;
@@ -102,9 +102,6 @@ namespace Snake {
 			this->btnSettingsConfig = (gcnew System::Windows::Forms::Button());
 			this->bunifuSettingsTopSidePnlDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->bunifuSettingsFormDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
-			this->pnlRenderSettings = (gcnew System::Windows::Forms::Panel());
-			this->lblRenderSettings = (gcnew System::Windows::Forms::Label());
-			this->btnRenderSettings = (gcnew System::Windows::Forms::Button());
 			this->pnlGameSettings = (gcnew System::Windows::Forms::Panel());
 			this->lblGameSettings = (gcnew System::Windows::Forms::Label());
 			this->btnGameSettings = (gcnew System::Windows::Forms::Button());
@@ -127,7 +124,6 @@ namespace Snake {
 			this->bunifuSettingsTopSideLblDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->pnlSettingsTopSide->SuspendLayout();
 			this->pnlSettingsConfig->SuspendLayout();
-			this->pnlRenderSettings->SuspendLayout();
 			this->pnlGameSettings->SuspendLayout();
 			this->pnlMenuSettings->SuspendLayout();
 			this->pnlDoneSettings->SuspendLayout();
@@ -141,7 +137,7 @@ namespace Snake {
 			this->pnlSettingsTopSide->Controls->Add(this->TopSidelblSettings);
 			this->pnlSettingsTopSide->Location = System::Drawing::Point(0, 0);
 			this->pnlSettingsTopSide->Name = L"pnlSettingsTopSide";
-			this->pnlSettingsTopSide->Size = System::Drawing::Size(585, 50);
+			this->pnlSettingsTopSide->Size = System::Drawing::Size(430, 50);
 			this->pnlSettingsTopSide->TabIndex = 0;
 			// 
 			// btnBackSettings
@@ -168,7 +164,7 @@ namespace Snake {
 			this->TopSidelblSettings->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->TopSidelblSettings->ForeColor = System::Drawing::SystemColors::ActiveCaption;
-			this->TopSidelblSettings->Location = System::Drawing::Point(244, 10);
+			this->TopSidelblSettings->Location = System::Drawing::Point(170, 10);
 			this->TopSidelblSettings->Name = L"TopSidelblSettings";
 			this->TopSidelblSettings->Size = System::Drawing::Size(100, 25);
 			this->TopSidelblSettings->TabIndex = 0;
@@ -181,7 +177,7 @@ namespace Snake {
 				static_cast<System::Int32>(static_cast<System::Byte>(48)), static_cast<System::Int32>(static_cast<System::Byte>(59)));
 			this->pnlSettingsConfig->Controls->Add(this->lblSettingsConfig);
 			this->pnlSettingsConfig->Controls->Add(this->btnSettingsConfig);
-			this->pnlSettingsConfig->Location = System::Drawing::Point(13, 70);
+			this->pnlSettingsConfig->Location = System::Drawing::Point(14, 70);
 			this->pnlSettingsConfig->Name = L"pnlSettingsConfig";
 			this->pnlSettingsConfig->Size = System::Drawing::Size(124, 132);
 			this->pnlSettingsConfig->TabIndex = 1;
@@ -232,56 +228,13 @@ namespace Snake {
 			this->bunifuSettingsFormDragControl->TargetControl = this;
 			this->bunifuSettingsFormDragControl->Vertical = true;
 			// 
-			// pnlRenderSettings
-			// 
-			this->pnlRenderSettings->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)),
-				static_cast<System::Int32>(static_cast<System::Byte>(48)), static_cast<System::Int32>(static_cast<System::Byte>(59)));
-			this->pnlRenderSettings->Controls->Add(this->lblRenderSettings);
-			this->pnlRenderSettings->Controls->Add(this->btnRenderSettings);
-			this->pnlRenderSettings->Location = System::Drawing::Point(157, 70);
-			this->pnlRenderSettings->Name = L"pnlRenderSettings";
-			this->pnlRenderSettings->Size = System::Drawing::Size(124, 132);
-			this->pnlRenderSettings->TabIndex = 2;
-			// 
-			// lblRenderSettings
-			// 
-			this->lblRenderSettings->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->lblRenderSettings->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->lblRenderSettings->ForeColor = System::Drawing::SystemColors::ActiveCaption;
-			this->lblRenderSettings->Location = System::Drawing::Point(22, 98);
-			this->lblRenderSettings->Name = L"lblRenderSettings";
-			this->lblRenderSettings->Size = System::Drawing::Size(80, 23);
-			this->lblRenderSettings->TabIndex = 1;
-			this->lblRenderSettings->Text = L"Render";
-			this->lblRenderSettings->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// btnRenderSettings
-			// 
-			this->btnRenderSettings->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)), static_cast<System::Int32>(static_cast<System::Byte>(50)));
-			this->btnRenderSettings->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)), static_cast<System::Int32>(static_cast<System::Byte>(50)));
-			this->btnRenderSettings->FlatAppearance->BorderSize = 0;
-			this->btnRenderSettings->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnRenderSettings->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->btnRenderSettings->ForeColor = System::Drawing::SystemColors::ActiveCaption;
-			this->btnRenderSettings->Location = System::Drawing::Point(9, 10);
-			this->btnRenderSettings->Name = L"btnRenderSettings";
-			this->btnRenderSettings->Size = System::Drawing::Size(105, 85);
-			this->btnRenderSettings->TabIndex = 0;
-			this->btnRenderSettings->Text = L"Render Settings";
-			this->btnRenderSettings->UseVisualStyleBackColor = false;
-			this->btnRenderSettings->Click += gcnew System::EventHandler(this, &Settings::btnRenderSettings_Click);
-			// 
 			// pnlGameSettings
 			// 
 			this->pnlGameSettings->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)), static_cast<System::Int32>(static_cast<System::Byte>(48)),
 				static_cast<System::Int32>(static_cast<System::Byte>(59)));
 			this->pnlGameSettings->Controls->Add(this->lblGameSettings);
 			this->pnlGameSettings->Controls->Add(this->btnGameSettings);
-			this->pnlGameSettings->Location = System::Drawing::Point(301, 70);
+			this->pnlGameSettings->Location = System::Drawing::Point(151, 70);
 			this->pnlGameSettings->Name = L"pnlGameSettings";
 			this->pnlGameSettings->Size = System::Drawing::Size(124, 132);
 			this->pnlGameSettings->TabIndex = 3;
@@ -324,7 +277,7 @@ namespace Snake {
 				static_cast<System::Int32>(static_cast<System::Byte>(59)));
 			this->pnlMenuSettings->Controls->Add(this->lblMenuSettings);
 			this->pnlMenuSettings->Controls->Add(this->btnMenuSettings);
-			this->pnlMenuSettings->Location = System::Drawing::Point(444, 70);
+			this->pnlMenuSettings->Location = System::Drawing::Point(290, 70);
 			this->pnlMenuSettings->Name = L"pnlMenuSettings";
 			this->pnlMenuSettings->Size = System::Drawing::Size(124, 132);
 			this->pnlMenuSettings->TabIndex = 4;
@@ -366,7 +319,7 @@ namespace Snake {
 			this->pnlDoneSettings->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)), static_cast<System::Int32>(static_cast<System::Byte>(48)),
 				static_cast<System::Int32>(static_cast<System::Byte>(59)));
 			this->pnlDoneSettings->Controls->Add(this->btnDoneSettings);
-			this->pnlDoneSettings->Location = System::Drawing::Point(157, 222);
+			this->pnlDoneSettings->Location = System::Drawing::Point(78, 222);
 			this->pnlDoneSettings->Name = L"pnlDoneSettings";
 			this->pnlDoneSettings->Size = System::Drawing::Size(268, 65);
 			this->pnlDoneSettings->TabIndex = 5;
@@ -403,7 +356,7 @@ namespace Snake {
 			// bunifuRenderSettingsBtnElipse
 			// 
 			this->bunifuRenderSettingsBtnElipse->ElipseRadius = 20;
-			this->bunifuRenderSettingsBtnElipse->TargetControl = this->btnRenderSettings;
+			this->bunifuRenderSettingsBtnElipse->TargetControl = this;
 			// 
 			// bunifuGameSettingsBtnElipse
 			// 
@@ -423,7 +376,7 @@ namespace Snake {
 			// bunifuRenderSettingsPnlElipse
 			// 
 			this->bunifuRenderSettingsPnlElipse->ElipseRadius = 20;
-			this->bunifuRenderSettingsPnlElipse->TargetControl = this->pnlRenderSettings;
+			this->bunifuRenderSettingsPnlElipse->TargetControl = this;
 			// 
 			// bunifuGameSettingsPnlElipse
 			// 
@@ -458,21 +411,21 @@ namespace Snake {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(50)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(65)));
-			this->ClientSize = System::Drawing::Size(585, 300);
+			this->ClientSize = System::Drawing::Size(430, 300);
 			this->Controls->Add(this->pnlDoneSettings);
 			this->Controls->Add(this->pnlMenuSettings);
 			this->Controls->Add(this->pnlGameSettings);
-			this->Controls->Add(this->pnlRenderSettings);
 			this->Controls->Add(this->pnlSettingsConfig);
 			this->Controls->Add(this->pnlSettingsTopSide);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->KeyPreview = true;
 			this->Name = L"Settings";
 			this->Opacity = 0.97;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Settings";
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Settings::Settings_KeyDown);
 			this->pnlSettingsTopSide->ResumeLayout(false);
 			this->pnlSettingsConfig->ResumeLayout(false);
-			this->pnlRenderSettings->ResumeLayout(false);
 			this->pnlGameSettings->ResumeLayout(false);
 			this->pnlMenuSettings->ResumeLayout(false);
 			this->pnlDoneSettings->ResumeLayout(false);
@@ -481,10 +434,10 @@ namespace Snake {
 		}
 #pragma endregion
 	private: System::Void btnSettingsConfig_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void btnRenderSettings_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnGameSettings_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMenuSettings_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnDoneSettings_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnBackSettings_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Settings_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 };
 }
