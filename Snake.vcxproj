@@ -173,6 +173,7 @@
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Author\Author.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.cpp" />
     <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
@@ -190,6 +191,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.h">
@@ -235,6 +239,9 @@
       </LogicalName>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.resx">
+      <DependentUpon>Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.resx">
       <DependentUpon>Src\Zyrian\GUI\MainGUI\Settings\Settings.h</DependentUpon>

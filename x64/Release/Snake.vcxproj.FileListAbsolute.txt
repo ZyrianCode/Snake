@@ -1,0 +1,12 @@
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.vcxprojAssemblyReference.cache
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.Game.Game.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.About.About.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.Author.Author.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.InGameGUI.InGameGUI.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.MainMenu.GUIMainMenu.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.Settings.GameSettings.GameSettings.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.Settings.Settings.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.vcxproj.GenerateResource.cache
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.vcxproj.CopyComplete
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.exe
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Bunifu_UI_v1.52.dll
