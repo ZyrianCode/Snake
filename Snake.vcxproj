@@ -162,6 +162,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
@@ -173,7 +174,10 @@
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Author\Author.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\InGameGUI\InGameGUI.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Controls\ControlsSettings.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Globals\GlobalsSettings.cpp" />
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Visuals\VisualsSettings.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.cpp" />
     <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
@@ -193,7 +197,16 @@
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Controls\ControlsSettings.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Globals\GlobalsSettings.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Visuals\VisualsSettings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.h">
@@ -240,8 +253,21 @@
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Controls\ControlsSettings.resx">
+      <DependentUpon>Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Controls\ControlsSettings.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.resx">
       <DependentUpon>Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Snake.GameSettings.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Snake.GameSettings.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Snake.GameSettings.resources</LogicalName>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Snake.GameSettings.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Globals\GlobalsSettings.resx">
+      <DependentUpon>Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Globals\GlobalsSettings.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Visuals\VisualsSettings.resx">
+      <DependentUpon>Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Visuals\VisualsSettings.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.resx">
       <DependentUpon>Src\Zyrian\GUI\MainGUI\Settings\Settings.h</DependentUpon>
@@ -256,7 +282,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\32x32\Controls.png" />
+    <Image Include="resources\32x32\GameGlobalSettings.png" />
+    <Image Include="resources\32x32\Keyboard.png" />
     <Image Include="resources\32x32\return.png" />
+    <Image Include="resources\32x32\Visuals.png" />
     <Image Include="resources\return.png" />
   </ItemGroup>
   <ItemGroup>

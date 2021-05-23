@@ -9,3 +9,6 @@ D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\S
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.exe
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.vcxprojAssemblyReference.cache
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.Src.Zyrian.GUI.MainGUI.Settings.GameSettings.GameSettings.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.Src.Zyrian.GUI.MainGUI.Settings.GameSettings.Controls.ControlsSettings.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.Src.Zyrian.GUI.MainGUI.Settings.GameSettings.Globals.GlobalsSettings.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Debug\Snake.Src.Zyrian.GUI.MainGUI.Settings.GameSettings.Visuals.VisualsSettings.resources

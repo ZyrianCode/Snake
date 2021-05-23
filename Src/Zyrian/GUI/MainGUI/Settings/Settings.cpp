@@ -2,6 +2,7 @@
 #include "Src/Zyrian/GUI/MainGUI/MainMenu/GUIMainMenu.h"
 #include "Src/Zyrian/GUI/InGameGUI/InGameGUI.h"
 #include "Src/Zyrian/Game/Game.h"
+#include "Src/Zyrian/GUI/MainGUI/Settings/GameSettings/GameSettings.h"
 //#include "../../../Game/Game.h"
 //#include "../MainMenu/GUIMainMenu.h"
 //#include "../../InGameGUI/InGameGUI.h"
@@ -14,7 +15,8 @@ System::Void Snake::Settings::btnSettingsConfig_Click(System::Object^ sender, Sy
 
 System::Void Snake::Settings::btnGameSettings_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	return System::Void();
+	GameSettings^ gameSettings = gcnew GameSettings();
+	gameSettings->ShowDialog();
 }
 
 System::Void Snake::Settings::btnMenuSettings_Click(System::Object^ sender, System::EventArgs^ e)

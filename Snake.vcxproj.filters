@@ -44,6 +44,15 @@
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Controls\ControlsSettings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Globals\GlobalsSettings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Visuals\VisualsSettings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.h">
@@ -67,12 +76,33 @@
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\GameSettings.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Controls\ControlsSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Globals\GlobalsSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Visuals\VisualsSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\32x32\return.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="resources\return.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\32x32\GameGlobalSettings.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\32x32\Visuals.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\32x32\Controls.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\32x32\Keyboard.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
