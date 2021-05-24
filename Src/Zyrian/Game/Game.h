@@ -1,4 +1,5 @@
 #pragma once
+#include "Entities/SnakeEntity.h"
 
 namespace Snake {
 
@@ -9,19 +10,20 @@ namespace Snake {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	
 	/// <summary>
 	/// Сводка для Game
 	/// </summary>
 	public ref class Game : public System::Windows::Forms::Form
 	{
 	public:
-		Game(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
-		}
+		Game(void);
+		//{
+		//	InitializeComponent();
+		//	//
+		//	//TODO: добавьте код конструктора
+		//	//
+		//}
 
 	protected:
 		/// <summary>
@@ -45,6 +47,8 @@ namespace Snake {
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGameTopSideLblDragControl;
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGameFormDragControl;
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGameTopSidePnlDragControl;
+	private: System::Windows::Forms::Label^ lblGameCount;
+	private: System::Windows::Forms::Timer^ GameTimer;
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 
@@ -75,6 +79,8 @@ namespace Snake {
 			this->bunifuGameTopSideLblDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->bunifuGameFormDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->bunifuGameTopSidePnlDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
+			this->lblGameCount = (gcnew System::Windows::Forms::Label());
+			this->GameTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pnlGameTopSide->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -171,6 +177,22 @@ namespace Snake {
 			this->bunifuGameTopSidePnlDragControl->TargetControl = this->pnlGameTopSide;
 			this->bunifuGameTopSidePnlDragControl->Vertical = true;
 			// 
+			// lblGameCount
+			// 
+			this->lblGameCount->AutoSize = true;
+			this->lblGameCount->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lblGameCount->ForeColor = System::Drawing::Color::Green;
+			this->lblGameCount->Location = System::Drawing::Point(578, 62);
+			this->lblGameCount->Name = L"lblGameCount";
+			this->lblGameCount->Size = System::Drawing::Size(100, 25);
+			this->lblGameCount->TabIndex = 6;
+			this->lblGameCount->Text = L"Count: 0";
+			// 
+			// GameTimer
+			// 
+			this->GameTimer->Tick += gcnew System::EventHandler(this, &Game::GameForm_Update);
+			// 
 			// Game
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -178,6 +200,7 @@ namespace Snake {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(50)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(65)));
 			this->ClientSize = System::Drawing::Size(700, 700);
+			this->Controls->Add(this->lblGameCount);
 			this->Controls->Add(this->pnlGameArea);
 			this->Controls->Add(this->pnlLeftBorder);
 			this->Controls->Add(this->pnlRightBorder);
@@ -192,12 +215,198 @@ namespace Snake {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Game::Game_KeyDown);
 			this->pnlGameTopSide->ResumeLayout(false);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 	public: static Boolean IsRunning;
 	private: System::Void Game_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 	private: System::Void GameOnInGameGui_Close(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
+
+	private: Vector2^ gameArea;
+	//Фрукты
+	private: PictureBox^ commonFruit;
+	private: PictureBox^ superFruit;
+		
+	//Монеты
+	private: PictureBox^ coin;
+	private: PictureBox^ timeCoin;
+	//Негативные эффекты
+	private: PictureBox^ bomb;
+	private: PictureBox^ potionOfSlowness;
+	private: PictureBox^ potionOfCoinDecrease;
+	//Позитивные эффекты
+	private: PictureBox^ potionOfCoinIncrease;
+	private: PictureBox^ potionOfTimeFreeze;
+	private: PictureBox^ potionOfSpeed;
 	
+	private: Snake^ snake = gcnew Snake();
+	private: bool isDead;
+	private: bool isAlive;
+	private: bool isPlayable;
+	private: bool firstLaunch;
+	//private: int step = 10;
+	private: int updateInterval = 100;
+	/*private: int score = 0;
+	private: int balance = 0;
+	private: int expirience = 0;*/
+	private: GameStats^ gameStats = gcnew GameStats();
+
+	private: void NewGame();
+	private: void Movement();
+	private: System::Void GameForm_Update(System::Object^ sender, System::EventArgs^ e);
 };
+
+	
+	//__interface IFruit //Предоставляет метод генерации фруктов
+	//{
+	//	public: void GenerateFruit();
+	//};
+	//
+
+	//class CommonFruit : IFruit //Добавляет количество Exp и Score
+	//{
+	//public:
+	//	
+	//	int ExpAmount = 5; //Насколько увеличивает Exp
+	//	int ScoreAmount = 1; //Насколько увеличивает score
+	//	float Factor = 1.0f; //Частота появления фрукта
+	//	//void GenerateFruit();
+	//	//void ApplyEffect(); //Представляет собой интерфейс взаимодействия с классом и применяет метода приватной области
+	//private:
+	//	//void AddScore();
+	//	//void AddExp();
+	//};
+
+	//class SuperFruit : IFruit
+	//{
+	//public:
+	//	
+	//	int ExpAmount = 20; //Количество Exp
+	//	int ScoreAmount = -10; //Количество очков
+	//	int AmountOfTimeToAdd = 10;
+	//	float Factor = 0.25f; //Частота появления фрукта
+	//	//void GenerateFruit();
+	//	//void ApplyEffect(); //Представляет собой интерфейс взаимодействия с классом и применяет методы приватной области
+	//private:
+	//	//void IncreaseTime();
+	//	//void AddScore();
+	//	//void AddExp();
+	//};
+
+
+	//
+	//__interface ICoin
+	//{
+	//	public: void GenerateCoin();
+	//};
+	//
+	//class CommonCoin : ICoin //Добавляет баланс коинов
+	//{
+	//public:
+
+	//	int AmountOfCoinsToAdd = 10;
+	//	//void GenerateCoin();
+	//	//void AddToBalance();
+	//private:
+	//	//
+	//};
+	//
+	//class TimeCoin : ICoin //Прибавляет время
+	//{
+	//public:
+	//	int AmountOfTimeToAdd = 10;
+	//	//void AddTime();
+	//	//void GenerateCoin();
+	//private:
+
+	//};
+
+
+	//
+	//class Bomb //Взрывает поле игры. При нахождении в радиусе поражения, игра будет проиграна.
+	//{
+	//public:
+	//	
+	//	int TimeToExplosion = 10;
+	//	int DamageRadius = 4;
+	//	float Factor = 0.35f;
+	//	//void GenerateBomb();
+	//	//void ApplyExplosion();
+	//private:
+	//	//void StartBombTimer();
+	//	//void ExplodeBomb();
+	//};
+
+	//
+
+	//__interface ICommonPotion 
+	//{
+	//	public: void GeneratePotion();
+	//	public:	void ApplyEffect();		
+	//};
+	//__interface IRarePotion 
+	//{
+	//	public: void GeneratePotion();
+	//	public: void ApplyEffect();
+	//};
+	//
+
+
+
+	//class PotionOfSlowness : ICommonPotion  
+	//{
+	//public:
+	//	int Duration = 20;
+	//	float Multiplier = 1.2f;
+	//	float Factor = 0.40f;
+	//	//void CancelEffect();
+	//private:
+	//	//void GeneratePotion();
+	//	//void StartPotionTimer();
+	//	//void DecreaseStep(float Multiplier);
+	//};
+
+
+	//class PotionOfSpeed : ICommonPotion 
+	//{
+	//public:
+	//	int Duration = 20; //Время действия
+	//	float Multiplier = 1.2f; //Множитель ускорения
+	//	float Factor = 0.40f; //Частота появления
+	//	//void ApplyEffect();
+	//	//void CancelEffect();
+	//private:
+	//	//void GeneratePotion();
+	//	//void SaveSpeedBeforeApplyEffect();
+	//	//void StartPotionTimer();
+	//	//void IncreaseStep(float Multiplier);
+	//	//void PotionTimerReset();
+	//	//void ReturnInitialSpeed();
+	//};
+
+	//class PotionOfTimeFreeze : IRarePotion 
+	//{
+	//public:
+	//	
+	//	int Duration = 10; //Время действия
+	//	float Factor = 0.25f; //Частота появления
+	//	//void ApplyEffect();
+	//	//void CancelEffect();
+	//private:
+	//	//void GeneratePotion();
+	//	//void StartPotionTimer();
+	//	//void GameTimeStop();
+	//};
+
+	/*public ref class Snake
+	{
+	public:
+
+		array<PictureBox^>^ SnakeEntity;
+	private:
+
+	};*/
+	
+
 }

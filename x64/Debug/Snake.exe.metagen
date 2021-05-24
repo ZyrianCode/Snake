@@ -31,6 +31,33 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class Snake.Vector2: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 X : Public
+    Int32 Y : Public
+Class Snake.GameStats: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 Score : Public
+    Int32 Balance : Public
+    Int32 Expirience : Public
+  Methods:
+    Initialize(): PrivateScope, Public, HideBySig
+Class Snake.Snake: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.PictureBox[] SnakeEntity : Public
+    Int32 Step : Public
+  Methods:
+    Initialize(): PrivateScope, Public, HideBySig
+    MoveForward(): PrivateScope, Public, HideBySig
+    MoveBackward(): PrivateScope, Public, HideBySig
+    MoveRight(): PrivateScope, Public, HideBySig
+    MoveLeft(): PrivateScope, Public, HideBySig
+    Move(): PrivateScope, Public, HideBySig
+    Eat(): PrivateScope, Public, HideBySig
+    GetDirection(): PrivateScope, Public, HideBySig
 Class Snake.Game: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
