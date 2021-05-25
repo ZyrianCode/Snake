@@ -11,13 +11,15 @@
 
 System::Void Snake::InGameGUI::btnMenuIGBackToGame_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	this->Hide();
+	this->Close();
 	this->isInGameGUIVisible = false;
 }
 
 System::Void Snake::InGameGUI::btnMenuIGNewGame_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	return System::Void();
+	NeedToRenewGame = true;
+	this->isInGameGUIVisible = false;
+	this->Close();
 }
 
 System::Void Snake::InGameGUI::btnMenuIGSettings_Click(System::Object^ sender, System::EventArgs^ e)
@@ -30,6 +32,7 @@ System::Void Snake::InGameGUI::btnMenuIGBackToMenu_Click(System::Object^ sender,
 {
 	GUIMainMenu^ guiMainMenu = gcnew GUIMainMenu();
 	guiMainMenu->Show();
+	this->WasBackToMenuActive = true;
 	this->Close();
 	this->isInGameGUIVisible = false;
 }
@@ -79,7 +82,7 @@ System::Void Snake::InGameGUI::InGameGUI_KeyDown(System::Object^ sender, System:
 {
 	if (e->KeyCode.ToString() == "Escape")
 	{
-		this->Hide();
+		this->Close();
 		this->isInGameGUIVisible = false;
 	}
 }

@@ -44,13 +44,17 @@ Class Snake.GameStats: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Int32 Expirience : Public
   Methods:
     Initialize(): PrivateScope, Public, HideBySig
+    Refresh(): PrivateScope, Public, HideBySig
 Class Snake.Snake: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
   Fields:
     System.Windows.Forms.PictureBox[] SnakeEntity : Public
     Int32 Step : Public
   Methods:
     Initialize(): PrivateScope, Public, HideBySig
+    Deinitialize(): PrivateScope, Public, HideBySig
     MoveForward(): PrivateScope, Public, HideBySig
     MoveBackward(): PrivateScope, Public, HideBySig
     MoveRight(): PrivateScope, Public, HideBySig
@@ -58,16 +62,37 @@ Class Snake.Snake: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Move(): PrivateScope, Public, HideBySig
     Eat(): PrivateScope, Public, HideBySig
     GetDirection(): PrivateScope, Public, HideBySig
+    SetOppositDirection(): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class Snake.CommonFruit: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.PictureBox CommonFruitItem : Public
+    Snake.Vector2 FruitPos : Public
+    System.Random rand : Public
+    Snake.Snake snake : Public
+  Methods:
+    GenerateCommonFruit(): PrivateScope, Public, HideBySig
+    CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
+    Initialize(): PrivateScope, Public, HideBySig
+    Deconstruct(): PrivateScope, Public, HideBySig
 Class Snake.Game: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
+    System.Windows.Forms.Panel pnlUpperBorder : Public
+    System.Windows.Forms.Panel pnlLowerBorder : Public
+    System.Windows.Forms.Panel pnlLeftBorder : Public
+    System.Windows.Forms.Panel pnlRightBorder : Public
+    Snake.Vector2 gameArea : Public
     Boolean IsRunning : Public, Static
 Class Snake.InGameGUI: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Boolean isInGameGUIVisible : Public, Static
+    Boolean WasBackToMenuActive : Public, Static
+    Boolean NeedToRenewGame : Public, Static
   Methods:
     InGameGUI_Shown(Object, EventArgs): PrivateScope, Public, HideBySig
     InGameGUIOpen(): PrivateScope, Public, HideBySig

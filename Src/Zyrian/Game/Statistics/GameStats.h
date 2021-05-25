@@ -9,6 +9,7 @@ namespace Snake {
 		int Balance;
 		int Expirience;
 		void Initialize();
+		void Refresh();
 	private:
 
 	};

@@ -59,6 +59,9 @@
     <ClCompile Include="Src\Zyrian\Game\Statistics\GameStats.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Zyrian\Game\Items\CommonFruit.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.h">
@@ -94,7 +97,7 @@
     <ClInclude Include="Src\Zyrian\Game\Entities\SnakeEntity.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\Game\CustomTypes\Vector2.h">
+    <ClInclude Include="Src\Zyrian\Game\Additional\Vector2.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\Game\Packets\MovePacket.h">
@@ -104,6 +107,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\Game\Statistics\GameStats.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\Game\Items\CommonFruit.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

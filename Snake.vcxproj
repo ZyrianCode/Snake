@@ -171,6 +171,7 @@
   <ItemGroup>
     <ClCompile Include="Src\Zyrian\Game\Entities\SnakeEntity.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Game.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Items\CommonFruit.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Statistics\GameStats.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\About\About.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Author\Author.cpp" />
@@ -184,11 +185,12 @@
     <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Zyrian\Game\CustomTypes\Vector2.h" />
+    <ClInclude Include="Src\Zyrian\Game\Additional\Vector2.h" />
     <ClInclude Include="Src\Zyrian\Game\Entities\SnakeEntity.h" />
     <ClInclude Include="Src\Zyrian\Game\Game.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Src\Zyrian\Game\Items\CommonFruit.h" />
     <ClInclude Include="Src\Zyrian\Game\Packets\MovePacket.h" />
     <ClInclude Include="Src\Zyrian\Game\Packets\PacketSender\PacketHandler.h" />
     <ClInclude Include="Src\Zyrian\Game\Statistics\GameStats.h" />

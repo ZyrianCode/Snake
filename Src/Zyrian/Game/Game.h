@@ -1,5 +1,6 @@
 #pragma once
 #include "Entities/SnakeEntity.h"
+#include "Items/CommonFruit.h"
 
 namespace Snake {
 
@@ -38,10 +39,15 @@ namespace Snake {
 		}
 	private: System::Windows::Forms::Panel^ pnlGameTopSide;
 	private: System::Windows::Forms::Label^ lblGameTopSide;
-	private: System::Windows::Forms::Panel^ pnlUpperBorder;
-	private: System::Windows::Forms::Panel^ pnlLowerBorder;
-	private: System::Windows::Forms::Panel^ pnlLeftBorder;
-	private: System::Windows::Forms::Panel^ pnlRightBorder;
+	public: System::Windows::Forms::Panel^ pnlUpperBorder;
+	private:
+	public: System::Windows::Forms::Panel^ pnlLowerBorder;
+	public: System::Windows::Forms::Panel^ pnlLeftBorder;
+	public: System::Windows::Forms::Panel^ pnlRightBorder;
+
+
+
+
 	private: System::Windows::Forms::Panel^ pnlGameArea;
 	private: Bunifu::Framework::UI::BunifuElipse^ bunifuGameFormElipse;
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGameTopSideLblDragControl;
@@ -223,9 +229,9 @@ namespace Snake {
 	private: System::Void Game_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 	private: System::Void GameOnInGameGui_Close(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
 
-	private: Vector2^ gameArea;
+	public: Vector2^ gameArea;
 	//Фрукты
-	private: PictureBox^ commonFruit;
+	private: CommonFruit^ commonFruit = gcnew CommonFruit();
 	private: PictureBox^ superFruit;
 		
 	//Монеты
@@ -241,6 +247,7 @@ namespace Snake {
 	private: PictureBox^ potionOfSpeed;
 	
 	private: Snake^ snake = gcnew Snake();
+	
 	private: bool isDead;
 	private: bool isAlive;
 	private: bool isPlayable;
@@ -251,9 +258,13 @@ namespace Snake {
 	private: int balance = 0;
 	private: int expirience = 0;*/
 	private: GameStats^ gameStats = gcnew GameStats();
-
+	
 	private: void NewGame();
+	private: void FirstLaunchCheck();
+	private: void RemoveObjects();
 	private: void Movement();
+	private: void IntersectBorder();
+	private: void GenerateCommonFruits();
 	private: System::Void GameForm_Update(System::Object^ sender, System::EventArgs^ e);
 };
 

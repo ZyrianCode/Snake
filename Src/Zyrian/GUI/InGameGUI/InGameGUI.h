@@ -512,6 +512,8 @@ namespace Snake {
 
 		}
 #pragma endregion
+	public: static Boolean WasBackToMenuActive;
+	public: static Boolean NeedToRenewGame;
 	private: System::Void btnMenuIGBackToGame_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMenuIGNewGame_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnMenuIGSettings_Click(System::Object^ sender, System::EventArgs^ e);
