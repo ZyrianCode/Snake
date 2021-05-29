@@ -3,8 +3,8 @@
 #include "Src/Zyrian/Game/Statistics/GameStats.h"
 //#include "Src/Zyrian/Game/Entities/SnakeEntity.h"
 
-namespace Snake
-{
+namespace Snake {
+	
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -13,20 +13,18 @@ namespace Snake
 	using namespace System::Drawing;
 	using namespace Snake;
 	
-	public ref class CommonFruit
+	public ref class CommonCoin
 	{
-	public:
-		PictureBox^ CommonFruitItem = gcnew PictureBox();
-		Vector2^ FruitPos = gcnew Vector2();
+		public:
+		PictureBox^ CommonCoinItem = gcnew PictureBox();
+		Vector2^ CommonCoinPos = gcnew Vector2();
 		Random^ rand = gcnew Random();
-		
-		void GenerateCommonFruit();
+		//Snake^ snake = gcnew Snake();
+
+		void GenerateCommonCoin();
 		void CheckCollisionWithSnake();
+		void AddBalance();
 		void Initialize();
 		void Deconstruct();
-	private:
-
 	};
-
-
 }

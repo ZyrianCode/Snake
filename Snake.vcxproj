@@ -169,6 +169,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Zyrian\Game\Lists\Items.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Registry\CoinRegistry.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Registry\FruitRegistry.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Items\CommonCoin.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Entities\SnakeEntity.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Game.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Items\CommonFruit.cpp" />
@@ -185,6 +189,10 @@
     <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Zyrian\Game\Lists\Items.h" />
+    <ClInclude Include="Src\Zyrian\Game\Registry\CoinRegistry.h" />
+    <ClInclude Include="Src\Zyrian\Game\Registry\FruitRegistry.h" />
+    <ClInclude Include="Src\Zyrian\Game\Items\CommonCoin.h" />
     <ClInclude Include="Src\Zyrian\Game\Additional\Vector2.h" />
     <ClInclude Include="Src\Zyrian\Game\Entities\SnakeEntity.h" />
     <ClInclude Include="Src\Zyrian\Game\Game.h">

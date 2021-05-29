@@ -8,15 +8,17 @@ void Snake::Snake::Initialize()
 	Step = 10;
 	SnakeEntity[0]->Location = Point(300, 200);
 	SnakeEntity[0]->BackColor = Color::DarkGreen;
-	SnakeEntity[0]->Width = Step;
-	SnakeEntity[0]->Height = Step;
+	SnakeEntity[0]->Width = 10;
+	SnakeEntity[0]->Height = 10;
 }
 
-void Snake::Snake::Deinitialize()
+void Snake::Snake::Deconstruct()
 {
-	SnakeEntity[0]->Visible = false;
-	SnakeEntity[0] = nullptr;
-	SnakeEntity = nullptr;
+	for (int i = 0; i <= gameStats->Score; i++)
+	{
+		SnakeEntity[i]->Visible = false;
+		SnakeEntity[i] = nullptr;
+	}
 }
 
 void Snake::Snake::MoveForward()
@@ -49,7 +51,7 @@ void Snake::Snake::MoveLeft()
 
 void Snake::Snake::Move()
 {
-	GameStats^ gameStats = gcnew GameStats();
+	//gameStats = gcnew GameStats();
 
 	for (int i = gameStats->Score; i >= 1; i--)
 	{
@@ -61,7 +63,37 @@ void Snake::Snake::Move()
 
 void Snake::Snake::Eat()
 {
-	throw gcnew System::NotImplementedException();
+	if (SnakeEntity[0]->Location.X == items->commonFruit->FruitPos->X && SnakeEntity[0]->Location.Y == items->commonFruit->FruitPos->Y)
+	{
+		++gameStats->Score;
+		gameStats->WasScoreChanged = true;
+		IsAnyObjectWasEaten = true;
+		StartGrowth();
+		items->commonFruit->Deconstruct();
+		items->commonFruit = gcnew CommonFruit();
+		items->commonFruit->Initialize();
+		items->commonFruit->GenerateCommonFruit();
+	}
+	if (SnakeEntity[0]->Location.X == items->commonCoin->CommonCoinPos->X && SnakeEntity[0]->Location.Y == items->commonCoin->CommonCoinPos->Y)
+	{
+		//items->commonCoin->AddBalance();
+		gameStats->Balance += 5;
+		gameStats->WasBalanceChanged = true;
+		IsAnyObjectWasEaten = true;
+		items->commonCoin->Deconstruct();
+		items->commonCoin = gcnew CommonCoin();
+		items->commonCoin->Initialize();
+		items->commonCoin->GenerateCommonCoin();
+	}
+}
+
+void Snake::Snake::StartGrowth()
+{
+	SnakeEntity[gameStats->Score] = gcnew PictureBox();
+	SnakeEntity[gameStats->Score]->Location = Point(SnakeEntity[gameStats->Score - 1]->Location.X + (Step - 2) * direction->X, SnakeEntity[gameStats->Score - 1]->Location.Y - (Step - 2) * direction->Y);
+	SnakeEntity[gameStats->Score]->BackColor = Color::FromArgb(55, 120, 86);
+	SnakeEntity[gameStats->Score]->Width = 8;
+	SnakeEntity[gameStats->Score]->Height = 8;
 }
 
 Snake::Vector2^ Snake::Snake::GetDirection()

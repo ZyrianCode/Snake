@@ -1,6 +1,8 @@
 #pragma once
 #include "Src/Zyrian/Game/Additional/Vector2.h"
 #include "Src/Zyrian/Game/Statistics/GameStats.h"
+#include "Src/Zyrian/Game/Lists/Items.h"
+//#include "Src/Zyrian/Game/Items/CommonFruit.h"
 namespace Snake {
 	
 	using namespace System;
@@ -18,16 +20,21 @@ namespace Snake {
 			//delete this;
 		}
 		array<PictureBox^>^ SnakeEntity;
+		//CommonFruit^ commonFruit = gcnew CommonFruit();
+		Items^ items = gcnew Items();
+		GameStats^ gameStats = gcnew GameStats();
 		//PictureBox^ SnakeHead;
+		bool IsAnyObjectWasEaten = false;
 		int Step = 10;
 		void Initialize();
-		void Deinitialize();
+		void Deconstruct();
 		void MoveForward();
 		void MoveBackward();
 		void MoveRight();
 		void MoveLeft();
 		void Move();
 		void Eat();
+		void StartGrowth();
 		Vector2^ GetDirection();
 		void SetOppositDirection();
 		

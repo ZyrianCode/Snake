@@ -1,10 +1,11 @@
 #include "CommonFruit.h"
+#include "Src/Zyrian/Game/Entities/SnakeEntity.h"
 
 void Snake::CommonFruit::GenerateCommonFruit()
 {
 	//Game^ game = gcnew Game();
-	FruitPos->X = rand->Next(7, 680 - 7);
-	FruitPos->Y = rand->Next(7, 530 - 7);
+	FruitPos->X = rand->Next(8, 680 - 8);
+	FruitPos->Y = rand->Next(8, 530 - 8);
 	
 	CheckCollisionWithSnake();
 	
@@ -21,8 +22,9 @@ void Snake::CommonFruit::GenerateCommonFruit()
 
 void Snake::CommonFruit::CheckCollisionWithSnake()
 {
-	GameStats^ gameStats = gcnew GameStats();
-	for (int i = 0; i < gameStats->Score; i++)
+	//GameStats^ gameStats = gcnew GameStats();
+	Snake^ snake = gcnew Snake();
+	for (int i = 0; i < snake->gameStats->Score; i++)
 	{
 		if (FruitPos->X == snake->SnakeEntity[i]->Location.X &&
 			FruitPos->Y == snake->SnakeEntity[i]->Location.Y)

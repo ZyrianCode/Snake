@@ -1,6 +1,6 @@
 #pragma once
 #include "Entities/SnakeEntity.h"
-#include "Items/CommonFruit.h"
+//#include "Items/CommonFruit.h"
 
 namespace Snake {
 
@@ -55,6 +55,8 @@ namespace Snake {
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGameTopSidePnlDragControl;
 	private: System::Windows::Forms::Label^ lblGameCount;
 	private: System::Windows::Forms::Timer^ GameTimer;
+	private: System::Windows::Forms::Label^ lblGameExp;
+	private: System::Windows::Forms::Label^ lblGameBalance;
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 
@@ -87,6 +89,8 @@ namespace Snake {
 			this->bunifuGameTopSidePnlDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->lblGameCount = (gcnew System::Windows::Forms::Label());
 			this->GameTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->lblGameBalance = (gcnew System::Windows::Forms::Label());
+			this->lblGameExp = (gcnew System::Windows::Forms::Label());
 			this->pnlGameTopSide->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -188,8 +192,8 @@ namespace Snake {
 			this->lblGameCount->AutoSize = true;
 			this->lblGameCount->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lblGameCount->ForeColor = System::Drawing::Color::Green;
-			this->lblGameCount->Location = System::Drawing::Point(578, 62);
+			this->lblGameCount->ForeColor = System::Drawing::Color::Red;
+			this->lblGameCount->Location = System::Drawing::Point(523, 77);
 			this->lblGameCount->Name = L"lblGameCount";
 			this->lblGameCount->Size = System::Drawing::Size(100, 25);
 			this->lblGameCount->TabIndex = 6;
@@ -199,6 +203,32 @@ namespace Snake {
 			// 
 			this->GameTimer->Tick += gcnew System::EventHandler(this, &Game::GameForm_Update);
 			// 
+			// lblGameBalance
+			// 
+			this->lblGameBalance->AutoSize = true;
+			this->lblGameBalance->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lblGameBalance->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lblGameBalance->Location = System::Drawing::Point(522, 52);
+			this->lblGameBalance->Name = L"lblGameBalance";
+			this->lblGameBalance->Size = System::Drawing::Size(122, 25);
+			this->lblGameBalance->TabIndex = 7;
+			this->lblGameBalance->Text = L"Balance: 0";
+			// 
+			// lblGameExp
+			// 
+			this->lblGameExp->AutoSize = true;
+			this->lblGameExp->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lblGameExp->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lblGameExp->Location = System::Drawing::Point(524, 102);
+			this->lblGameExp->Name = L"lblGameExp";
+			this->lblGameExp->Size = System::Drawing::Size(78, 25);
+			this->lblGameExp->TabIndex = 8;
+			this->lblGameExp->Text = L"Exp: 0";
+			// 
 			// Game
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -206,6 +236,8 @@ namespace Snake {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(50)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(65)));
 			this->ClientSize = System::Drawing::Size(700, 700);
+			this->Controls->Add(this->lblGameExp);
+			this->Controls->Add(this->lblGameBalance);
 			this->Controls->Add(this->lblGameCount);
 			this->Controls->Add(this->pnlGameArea);
 			this->Controls->Add(this->pnlLeftBorder);
@@ -231,20 +263,20 @@ namespace Snake {
 
 	public: Vector2^ gameArea;
 	//Фрукты
-	private: CommonFruit^ commonFruit = gcnew CommonFruit();
+	//private: CommonFruit^ commonFruit = gcnew CommonFruit();
 	private: PictureBox^ superFruit;
 		
-	//Монеты
-	private: PictureBox^ coin;
-	private: PictureBox^ timeCoin;
-	//Негативные эффекты
-	private: PictureBox^ bomb;
-	private: PictureBox^ potionOfSlowness;
-	private: PictureBox^ potionOfCoinDecrease;
-	//Позитивные эффекты
-	private: PictureBox^ potionOfCoinIncrease;
-	private: PictureBox^ potionOfTimeFreeze;
-	private: PictureBox^ potionOfSpeed;
+	////Монеты
+	//private: PictureBox^ coin;
+	//private: PictureBox^ timeCoin;
+	////Негативные эффекты
+	//private: PictureBox^ bomb;
+	//private: PictureBox^ potionOfSlowness;
+	//private: PictureBox^ potionOfCoinDecrease;
+	////Позитивные эффекты
+	//private: PictureBox^ potionOfCoinIncrease;
+	//private: PictureBox^ potionOfTimeFreeze;
+	//private: PictureBox^ potionOfSpeed;
 	
 	private: Snake^ snake = gcnew Snake();
 	
@@ -257,12 +289,15 @@ namespace Snake {
 	/*private: int score = 0;
 	private: int balance = 0;
 	private: int expirience = 0;*/
-	private: GameStats^ gameStats = gcnew GameStats();
+	//private: GameStats^ gameStats = gcnew GameStats();
 	
 	private: void NewGame();
 	private: void FirstLaunchCheck();
 	private: void RemoveObjects();
+	private: void IncreaseScore();
 	private: void Movement();
+	private: void Eating();
+	
 	private: void IntersectBorder();
 	private: void GenerateCommonFruits();
 	private: System::Void GameForm_Update(System::Object^ sender, System::EventArgs^ e);
