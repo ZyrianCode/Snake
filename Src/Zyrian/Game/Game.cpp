@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Src/Zyrian/GUI/InGameGUI/InGameGUI.h"
+#include "Src/Zyrian/GUI/MainGUI/Settings/GameSettings/Globals/GlobalsSettings.h"
 //#include "Items/CommonFruit.h"
 
 
@@ -21,11 +22,12 @@ System::Void Snake::Game::Game_KeyDown(System::Object^ sender, System::Windows::
     {
         isPlayable = false;
         inGameGUI->Show();
+        //GlobalSettings^ globalSettings = gcnew GlobalSettings();
     }
     else if (inGameGUI->isInGameGUIVisible && e->KeyCode.ToString() == "Escape")
     {
         inGameGUI->Activate();
-        inGameGUI->BringToFront();
+        inGameGUI->BringToFront();   	
     }
     inGameGUI->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Game::GameOnInGameGui_Close);
     if (e->KeyCode.ToString() == "W" || e->KeyCode.ToString() == "Up")
@@ -74,6 +76,7 @@ System::Void Snake::Game::GameOnInGameGui_Close(System::Object^ sender, System::
 void Snake::Game::NewGame()
 {
 	//Добавить проверку на первый запуск
+    pnlGameOver->Visible = false;
     FirstLaunchCheck();
 	//Создаём змейку и задаём свойства её головы
     snake->Initialize();
@@ -99,9 +102,9 @@ void Snake::Game::NewGame()
     snake->items->commonCoin->GenerateCommonCoin();
     pnlGameArea->Controls->Add(snake->items->commonCoin->CommonCoinItem);
 
-    GameTimer->Interval = updateInterval;
+    //GameTimer->Interval = updateInterval;
+    ChangeSpeed();
     GameTimer->Start();
-
     isPlayable = true;
     isDead = false;
 
@@ -188,22 +191,42 @@ void Snake::Game::Eating()
     }
 }
 
+void Snake::Game::SelfEating()
+{
+    if (snake->SelfEat()) 
+    { GameOver(); }
+
+}
+
+void Snake::Game::GameOver()
+{
+    isPlayable = true;
+    isDead = true;
+    pnlGameOver->Visible = true;
+}
+
 void Snake::Game::IntersectBorder()
 {
-    //snake->IntersectBorders();
-   /* if (snake->SnakeEntity[0]->Location.X >= pnlRightBorder->Location.X || snake->SnakeEntity[0]->Location.X <= pnlLeftBorder->Location.X)
-    {
-        snake->SetOppositDirection();
-    }
-
-    if (snake->SnakeEntity[0]->Location.Y <= pnlUpperBorder->Location.Y || snake->SnakeEntity[0]->Location.Y >= pnlLowerBorder->Location.Y)
-    {
-        snake->SetOppositDirection();   
-    }*/
-    if ((snake->SnakeEntity[0]->Location.X == 0 || snake->SnakeEntity[0]->Location.X == 680) ||
+    /*if ((snake->SnakeEntity[0]->Location.X == 0 || snake->SnakeEntity[0]->Location.X == 680) ||
         (snake->SnakeEntity[0]->Location.Y == 0 || snake->SnakeEntity[0]->Location.Y == 530))
     {
         snake->SetOppositDirection();
+    }*/
+    if (snake->SnakeEntity[0]->Location.X == 0)
+    {
+        snake->SnakeEntity[0]->Location = Point(680, snake->SnakeEntity[0]->Location.Y);
+    }
+    else if (snake->SnakeEntity[0]->Location.X == 680)
+    {
+        snake->SnakeEntity[0]->Location = Point(0, snake->SnakeEntity[0]->Location.Y);
+    }
+    else if (snake->SnakeEntity[0]->Location.Y == 0)
+    {
+        snake->SnakeEntity[0]->Location = Point(snake->SnakeEntity[0]->Location.X, 530);
+    }
+    else if (snake->SnakeEntity[0]->Location.Y == 530)
+    {
+        snake->SnakeEntity[0]->Location = Point(snake->SnakeEntity[0]->Location.X, 0);
     }
 }
 
@@ -213,14 +236,26 @@ void Snake::Game::GenerateCommonFruits()
     pnlGameArea->Controls->Add(commonFruit->CommonFruitItem);*/
 }
 
+void Snake::Game::ChangeSpeed()
+{
+    Options^ options = gcnew Options();
+    GameTimer->Stop();
+    options = optionsSaveSystem->Load();
+    updateSpeed = options->globals->difficulty->GameSpeed;
+	
+    int changableUpdateInterval = 0;
+    changableUpdateInterval = updateInterval;
+    changableUpdateInterval -= updateSpeed * 10;
+    GameTimer->Interval = changableUpdateInterval + 1;
+}
+
 System::Void Snake::Game::GameForm_Update(System::Object^ sender, System::EventArgs^ e)
 {
     if (!isDead && isPlayable) //BAD CODE
-    {
-        
+    {      
         Movement();
     	Eating();
-    	//OnEatYourselfEvent();
+    	SelfEating();
     	IntersectBorder();
     }
     else if (isDead && isPlayable)
@@ -233,3 +268,4 @@ System::Void Snake::Game::GameForm_Update(System::Object^ sender, System::EventA
         GameTimer->Stop();
     }
 }
+

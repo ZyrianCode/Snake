@@ -42,6 +42,7 @@ void Snake::CommonCoin::Initialize()
 	CommonCoinItem->BackColor = Color::FromArgb(196, 164, 55);
 	CommonCoinItem->Width = 12;
 	CommonCoinItem->Height = 12;
+	
 }
 
 void Snake::CommonCoin::Deconstruct()

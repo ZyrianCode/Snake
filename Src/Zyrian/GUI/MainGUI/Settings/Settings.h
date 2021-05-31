@@ -1,5 +1,4 @@
 #pragma once
-
 namespace Snake {
 
 	using namespace System;

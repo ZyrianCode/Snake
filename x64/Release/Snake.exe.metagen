@@ -31,6 +31,26 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Assembly Microsoft.VisualC.STLCLR, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Class Snake.Difficulty: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 GameSpeed : Public
+Class Snake.Globals: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Snake.Difficulty difficulty : Public
+Class Snake.Options: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Snake.Globals globals : Public
+Class Snake.OptionsSaveSystem: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    SetDefaultOptions(): PrivateScope, Public, HideBySig
+    Save(Options): PrivateScope, Public, HideBySig
+    Load(): PrivateScope, Public, HideBySig
 Class Snake.Vector2: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
@@ -42,6 +62,9 @@ Class Snake.GameStats: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Int32 Score : Public
     Int32 Balance : Public
     Int32 Expirience : Public
+    Boolean WasScoreChanged : Public
+    Boolean WasBalanceChanged : Public
+    Boolean WasExpChanged : Public
   Methods:
     Initialize(): PrivateScope, Public, HideBySig
     Refresh(): PrivateScope, Public, HideBySig
@@ -56,29 +79,48 @@ Class Snake.CommonFruit: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
     Initialize(): PrivateScope, Public, HideBySig
     Deconstruct(): PrivateScope, Public, HideBySig
+Class Snake.CommonCoin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.PictureBox CommonCoinItem : Public
+    Snake.Vector2 CommonCoinPos : Public
+    System.Random rand : Public
+  Methods:
+    GenerateCommonCoin(): PrivateScope, Public, HideBySig
+    CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
+    AddBalance(): PrivateScope, Public, HideBySig
+    Initialize(): PrivateScope, Public, HideBySig
+    Deconstruct(): PrivateScope, Public, HideBySig
+Class Snake.Items: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Snake.CommonFruit commonFruit : Public
+    Snake.CommonCoin commonCoin : Public
 Class Snake.Snake: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
     System.IDisposable
   Fields:
     System.Windows.Forms.PictureBox[] SnakeEntity : Public
+    Snake.Items items : Public
     Snake.GameStats gameStats : Public
+    Boolean IsAnyObjectWasEaten : Public
+    Boolean WasBorderCollision : Public
     Int32 Step : Public
   Methods:
     Initialize(): PrivateScope, Public, HideBySig
-    Deinitialize(): PrivateScope, Public, HideBySig
+    Deconstruct(): PrivateScope, Public, HideBySig
     MoveForward(): PrivateScope, Public, HideBySig
     MoveBackward(): PrivateScope, Public, HideBySig
     MoveRight(): PrivateScope, Public, HideBySig
     MoveLeft(): PrivateScope, Public, HideBySig
     Move(): PrivateScope, Public, HideBySig
     Eat(): PrivateScope, Public, HideBySig
+    SelfEat(): PrivateScope, Public, HideBySig
     StartGrowth(): PrivateScope, Public, HideBySig
     GetDirection(): PrivateScope, Public, HideBySig
     SetOppositDirection(): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
-Class Snake.CommonCoin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class Snake.Game: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -100,6 +142,14 @@ Class Snake.InGameGUI: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     InGameGUI_Shown(Object, EventArgs): PrivateScope, Public, HideBySig
     InGameGUIOpen(): PrivateScope, Public, HideBySig
     InGameGUIClose(): PrivateScope, Public, HideBySig
+Class Snake.GlobalsSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    HideGlobalSettingsInnerPanel(): PrivateScope, Public, HideBySig
+    ShowGlobalSettingsInnerPanel(String): PrivateScope, Public, HideBySig
+    SetGameSpeed(Int32): PrivateScope, Public, HideBySig
+    GetGameSpeed(): PrivateScope, Public, HideBySig
 Class Snake.About: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -124,9 +174,3 @@ Class Snake.VisualsSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
   Methods:
     HideInnerPanel(): PrivateScope, Public, HideBySig
     ShowInnerPanel(String): PrivateScope, Public, HideBySig
-Class Snake.GlobalsSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    HideGlobalSettingsInnerPanel(): PrivateScope, Public, HideBySig
-    ShowGlobalSettingsInnerPanel(String): PrivateScope, Public, HideBySig

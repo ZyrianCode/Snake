@@ -1,5 +1,8 @@
 #pragma once
 #include "Entities/SnakeEntity.h"
+#include "Options/Options.h"
+#include "Utilities/OptionsSaveSystem.h"
+//#include "Utilities/Settings/GlobalSettings.h"
 //#include "Items/CommonFruit.h"
 
 namespace Snake {
@@ -57,6 +60,9 @@ namespace Snake {
 	private: System::Windows::Forms::Timer^ GameTimer;
 	private: System::Windows::Forms::Label^ lblGameExp;
 	private: System::Windows::Forms::Label^ lblGameBalance;
+	private: System::Windows::Forms::Panel^ pnlGameOver;
+	private: System::Windows::Forms::Label^ lblGameOver;
+
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 
@@ -83,6 +89,8 @@ namespace Snake {
 			this->pnlLeftBorder = (gcnew System::Windows::Forms::Panel());
 			this->pnlRightBorder = (gcnew System::Windows::Forms::Panel());
 			this->pnlGameArea = (gcnew System::Windows::Forms::Panel());
+			this->pnlGameOver = (gcnew System::Windows::Forms::Panel());
+			this->lblGameOver = (gcnew System::Windows::Forms::Label());
 			this->bunifuGameFormElipse = (gcnew Bunifu::Framework::UI::BunifuElipse(this->components));
 			this->bunifuGameTopSideLblDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
 			this->bunifuGameFormDragControl = (gcnew Bunifu::Framework::UI::BunifuDragControl(this->components));
@@ -92,6 +100,8 @@ namespace Snake {
 			this->lblGameBalance = (gcnew System::Windows::Forms::Label());
 			this->lblGameExp = (gcnew System::Windows::Forms::Label());
 			this->pnlGameTopSide->SuspendLayout();
+			this->pnlGameArea->SuspendLayout();
+			this->pnlGameOver->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pnlGameTopSide
@@ -156,10 +166,33 @@ namespace Snake {
 			// 
 			this->pnlGameArea->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
 				static_cast<System::Int32>(static_cast<System::Byte>(50)));
+			this->pnlGameArea->Controls->Add(this->pnlGameOver);
 			this->pnlGameArea->Location = System::Drawing::Point(10, 160);
 			this->pnlGameArea->Name = L"pnlGameArea";
 			this->pnlGameArea->Size = System::Drawing::Size(680, 530);
 			this->pnlGameArea->TabIndex = 5;
+			// 
+			// pnlGameOver
+			// 
+			this->pnlGameOver->Controls->Add(this->lblGameOver);
+			this->pnlGameOver->Location = System::Drawing::Point(210, 72);
+			this->pnlGameOver->Name = L"pnlGameOver";
+			this->pnlGameOver->Size = System::Drawing::Size(228, 126);
+			this->pnlGameOver->TabIndex = 0;
+			this->pnlGameOver->Visible = false;
+			// 
+			// lblGameOver
+			// 
+			this->lblGameOver->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 20.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lblGameOver->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lblGameOver->Location = System::Drawing::Point(14, 40);
+			this->lblGameOver->Name = L"lblGameOver";
+			this->lblGameOver->Size = System::Drawing::Size(203, 43);
+			this->lblGameOver->TabIndex = 0;
+			this->lblGameOver->Text = L"Game Over!";
+			this->lblGameOver->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// bunifuGameFormElipse
 			// 
@@ -252,6 +285,8 @@ namespace Snake {
 			this->Text = L"Game";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Game::Game_KeyDown);
 			this->pnlGameTopSide->ResumeLayout(false);
+			this->pnlGameArea->ResumeLayout(false);
+			this->pnlGameOver->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -279,13 +314,16 @@ namespace Snake {
 	//private: PictureBox^ potionOfSpeed;
 	
 	private: Snake^ snake = gcnew Snake();
-	
+	//private: //Options^ options = gcnew Options();
+	private: OptionsSaveSystem^ optionsSaveSystem = gcnew OptionsSaveSystem();
+	//private: GlobalSettings^ globalSettings = gcnew GlobalSettings();
 	private: bool isDead;
 	private: bool isAlive;
 	private: bool isPlayable;
 	private: bool firstLaunch;
 	//private: int step = 10;
 	private: int updateInterval = 100;
+	private: int updateSpeed;
 	/*private: int score = 0;
 	private: int balance = 0;
 	private: int expirience = 0;*/
@@ -297,9 +335,11 @@ namespace Snake {
 	private: void IncreaseScore();
 	private: void Movement();
 	private: void Eating();
-	
+	private: void SelfEating();
+	private: void GameOver();
 	private: void IntersectBorder();
 	private: void GenerateCommonFruits();
+	private: void ChangeSpeed();
 	private: System::Void GameForm_Update(System::Object^ sender, System::EventArgs^ e);
 };
 

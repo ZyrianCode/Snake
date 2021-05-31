@@ -20,12 +20,13 @@ namespace Snake {
 			//delete this;
 		}
 		array<PictureBox^>^ SnakeEntity;
-		//CommonFruit^ commonFruit = gcnew CommonFruit();
 		Items^ items = gcnew Items();
 		GameStats^ gameStats = gcnew GameStats();
-		//PictureBox^ SnakeHead;
+		
 		bool IsAnyObjectWasEaten = false;
+		bool WasBorderCollision = false;
 		int Step = 10;
+		
 		void Initialize();
 		void Deconstruct();
 		void MoveForward();
@@ -34,6 +35,7 @@ namespace Snake {
 		void MoveLeft();
 		void Move();
 		void Eat();
+		bool SelfEat();
 		void StartGrowth();
 		Vector2^ GetDirection();
 		void SetOppositDirection();

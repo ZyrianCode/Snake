@@ -1,5 +1,5 @@
 #pragma once
-
+//#include "Src/Zyrian/Game/Utilities/Settings/GlobalSettings.h"
 namespace Snake {
 
 	using namespace System;
@@ -412,6 +412,7 @@ namespace Snake {
 
 		}
 #pragma endregion
+		//private: GlobalSettings^ gS = gcnew GlobalSettings();
 		private: Form^ activeForm = nullptr;
 		private: void OnStartDesign();
 		private: void HideDropDownMenu();

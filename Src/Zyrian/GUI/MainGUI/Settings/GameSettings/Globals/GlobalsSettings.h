@@ -1,4 +1,6 @@
 #pragma once
+#include "Src/Zyrian/Game/Options/Options.h"
+#include "Src/Zyrian/Game/Utilities/OptionsSaveSystem.h"
 
 namespace Snake {
 
@@ -52,6 +54,7 @@ namespace Snake {
 
 
 	private: System::Windows::Forms::Label^ lblGlobalSettingsLogo;
+	private: System::Windows::Forms::Button^ btnSaveGameSpeed;
 
 
 
@@ -76,19 +79,20 @@ namespace Snake {
 		void InitializeComponent(void)
 		{
 			this->pnlGlobalSettingsDifficulty = (gcnew System::Windows::Forms::Panel());
-			this->pnlSpawnOptions = (gcnew System::Windows::Forms::Panel());
-			this->lblSpawnOptions = (gcnew System::Windows::Forms::Label());
-			this->checkedListBoxSpawnOptions = (gcnew System::Windows::Forms::CheckedListBox());
 			this->pnlGameSpeed = (gcnew System::Windows::Forms::Panel());
 			this->bTextBoxGameSpeedDisplay = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
 			this->trackBarGameSpeed = (gcnew System::Windows::Forms::TrackBar());
 			this->lblGameSpeed = (gcnew System::Windows::Forms::Label());
+			this->pnlSpawnOptions = (gcnew System::Windows::Forms::Panel());
+			this->lblSpawnOptions = (gcnew System::Windows::Forms::Label());
+			this->checkedListBoxSpawnOptions = (gcnew System::Windows::Forms::CheckedListBox());
 			this->pnlGlobalSettingsLogo = (gcnew System::Windows::Forms::Panel());
 			this->lblGlobalSettingsLogo = (gcnew System::Windows::Forms::Label());
+			this->btnSaveGameSpeed = (gcnew System::Windows::Forms::Button());
 			this->pnlGlobalSettingsDifficulty->SuspendLayout();
-			this->pnlSpawnOptions->SuspendLayout();
 			this->pnlGameSpeed->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBarGameSpeed))->BeginInit();
+			this->pnlSpawnOptions->SuspendLayout();
 			this->pnlGlobalSettingsLogo->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -103,6 +107,60 @@ namespace Snake {
 			this->pnlGlobalSettingsDifficulty->Name = L"pnlGlobalSettingsDifficulty";
 			this->pnlGlobalSettingsDifficulty->Size = System::Drawing::Size(797, 638);
 			this->pnlGlobalSettingsDifficulty->TabIndex = 2;
+			this->pnlGlobalSettingsDifficulty->ParentChanged += gcnew System::EventHandler(this, &GlobalsSettings::pnlGlobalSettingsDifficulty_ParentChanged);
+			// 
+			// pnlGameSpeed
+			// 
+			this->pnlGameSpeed->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
+				static_cast<System::Int32>(static_cast<System::Byte>(50)));
+			this->pnlGameSpeed->Controls->Add(this->btnSaveGameSpeed);
+			this->pnlGameSpeed->Controls->Add(this->bTextBoxGameSpeedDisplay);
+			this->pnlGameSpeed->Controls->Add(this->trackBarGameSpeed);
+			this->pnlGameSpeed->Controls->Add(this->lblGameSpeed);
+			this->pnlGameSpeed->Location = System::Drawing::Point(81, 64);
+			this->pnlGameSpeed->Name = L"pnlGameSpeed";
+			this->pnlGameSpeed->Size = System::Drawing::Size(293, 162);
+			this->pnlGameSpeed->TabIndex = 2;
+			// 
+			// bTextBoxGameSpeedDisplay
+			// 
+			this->bTextBoxGameSpeedDisplay->BorderColorFocused = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(20)),
+				static_cast<System::Int32>(static_cast<System::Byte>(22)), static_cast<System::Int32>(static_cast<System::Byte>(23)));
+			this->bTextBoxGameSpeedDisplay->BorderColorIdle = System::Drawing::SystemColors::ActiveCaption;
+			this->bTextBoxGameSpeedDisplay->BorderColorMouseHover = System::Drawing::Color::SlateGray;
+			this->bTextBoxGameSpeedDisplay->BorderThickness = 3;
+			this->bTextBoxGameSpeedDisplay->Cursor = System::Windows::Forms::Cursors::IBeam;
+			this->bTextBoxGameSpeedDisplay->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->bTextBoxGameSpeedDisplay->ForeColor = System::Drawing::SystemColors::ActiveCaption;
+			this->bTextBoxGameSpeedDisplay->isPassword = false;
+			this->bTextBoxGameSpeedDisplay->Location = System::Drawing::Point(210, 109);
+			this->bTextBoxGameSpeedDisplay->Margin = System::Windows::Forms::Padding(4);
+			this->bTextBoxGameSpeedDisplay->Name = L"bTextBoxGameSpeedDisplay";
+			this->bTextBoxGameSpeedDisplay->Size = System::Drawing::Size(71, 44);
+			this->bTextBoxGameSpeedDisplay->TabIndex = 2;
+			this->bTextBoxGameSpeedDisplay->Text = L"Speed";
+			this->bTextBoxGameSpeedDisplay->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// trackBarGameSpeed
+			// 
+			this->trackBarGameSpeed->Location = System::Drawing::Point(16, 67);
+			this->trackBarGameSpeed->Name = L"trackBarGameSpeed";
+			this->trackBarGameSpeed->Size = System::Drawing::Size(265, 45);
+			this->trackBarGameSpeed->TabIndex = 0;
+			
+			// 
+			// lblGameSpeed
+			// 
+			this->lblGameSpeed->AutoSize = true;
+			this->lblGameSpeed->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lblGameSpeed->ForeColor = System::Drawing::SystemColors::ActiveCaption;
+			this->lblGameSpeed->Location = System::Drawing::Point(98, 16);
+			this->lblGameSpeed->Name = L"lblGameSpeed";
+			this->lblGameSpeed->Size = System::Drawing::Size(99, 19);
+			this->lblGameSpeed->TabIndex = 1;
+			this->lblGameSpeed->Text = L"Game Speed";
 			// 
 			// pnlSpawnOptions
 			// 
@@ -145,57 +203,6 @@ namespace Snake {
 			this->checkedListBoxSpawnOptions->Size = System::Drawing::Size(145, 68);
 			this->checkedListBoxSpawnOptions->TabIndex = 3;
 			// 
-			// pnlGameSpeed
-			// 
-			this->pnlGameSpeed->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(38)),
-				static_cast<System::Int32>(static_cast<System::Byte>(50)));
-			this->pnlGameSpeed->Controls->Add(this->bTextBoxGameSpeedDisplay);
-			this->pnlGameSpeed->Controls->Add(this->trackBarGameSpeed);
-			this->pnlGameSpeed->Controls->Add(this->lblGameSpeed);
-			this->pnlGameSpeed->Location = System::Drawing::Point(81, 64);
-			this->pnlGameSpeed->Name = L"pnlGameSpeed";
-			this->pnlGameSpeed->Size = System::Drawing::Size(293, 162);
-			this->pnlGameSpeed->TabIndex = 2;
-			// 
-			// bTextBoxGameSpeedDisplay
-			// 
-			this->bTextBoxGameSpeedDisplay->BorderColorFocused = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(20)),
-				static_cast<System::Int32>(static_cast<System::Byte>(22)), static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->bTextBoxGameSpeedDisplay->BorderColorIdle = System::Drawing::SystemColors::ActiveCaption;
-			this->bTextBoxGameSpeedDisplay->BorderColorMouseHover = System::Drawing::Color::SlateGray;
-			this->bTextBoxGameSpeedDisplay->BorderThickness = 3;
-			this->bTextBoxGameSpeedDisplay->Cursor = System::Windows::Forms::Cursors::IBeam;
-			this->bTextBoxGameSpeedDisplay->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 9.75F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			this->bTextBoxGameSpeedDisplay->ForeColor = System::Drawing::SystemColors::ActiveCaption;
-			this->bTextBoxGameSpeedDisplay->isPassword = false;
-			this->bTextBoxGameSpeedDisplay->Location = System::Drawing::Point(109, 101);
-			this->bTextBoxGameSpeedDisplay->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->bTextBoxGameSpeedDisplay->Name = L"bTextBoxGameSpeedDisplay";
-			this->bTextBoxGameSpeedDisplay->Size = System::Drawing::Size(71, 44);
-			this->bTextBoxGameSpeedDisplay->TabIndex = 2;
-			this->bTextBoxGameSpeedDisplay->Text = L"Speed";
-			this->bTextBoxGameSpeedDisplay->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// trackBarGameSpeed
-			// 
-			this->trackBarGameSpeed->Location = System::Drawing::Point(16, 67);
-			this->trackBarGameSpeed->Name = L"trackBarGameSpeed";
-			this->trackBarGameSpeed->Size = System::Drawing::Size(265, 45);
-			this->trackBarGameSpeed->TabIndex = 0;
-			// 
-			// lblGameSpeed
-			// 
-			this->lblGameSpeed->AutoSize = true;
-			this->lblGameSpeed->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->lblGameSpeed->ForeColor = System::Drawing::SystemColors::ActiveCaption;
-			this->lblGameSpeed->Location = System::Drawing::Point(98, 16);
-			this->lblGameSpeed->Name = L"lblGameSpeed";
-			this->lblGameSpeed->Size = System::Drawing::Size(99, 19);
-			this->lblGameSpeed->TabIndex = 1;
-			this->lblGameSpeed->Text = L"Game Speed";
-			// 
 			// pnlGlobalSettingsLogo
 			// 
 			this->pnlGlobalSettingsLogo->Controls->Add(this->lblGlobalSettingsLogo);
@@ -216,6 +223,18 @@ namespace Snake {
 			this->lblGlobalSettingsLogo->TabIndex = 0;
 			this->lblGlobalSettingsLogo->Text = L"Global Settings";
 			// 
+			// btnSaveGameSpeed
+			// 
+			this->btnSaveGameSpeed->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnSaveGameSpeed->ForeColor = System::Drawing::SystemColors::ActiveCaption;
+			this->btnSaveGameSpeed->Location = System::Drawing::Point(102, 112);
+			this->btnSaveGameSpeed->Name = L"btnSaveGameSpeed";
+			this->btnSaveGameSpeed->Size = System::Drawing::Size(75, 31);
+			this->btnSaveGameSpeed->TabIndex = 3;
+			this->btnSaveGameSpeed->Text = L"Save";
+			this->btnSaveGameSpeed->UseVisualStyleBackColor = true;
+			this->btnSaveGameSpeed->Click += gcnew System::EventHandler(this, &GlobalsSettings::btnSaveGameSpeed_Click);
+			// 
 			// GlobalsSettings
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -229,11 +248,11 @@ namespace Snake {
 			this->Name = L"GlobalsSettings";
 			this->Text = L"GlobalsSettings";
 			this->pnlGlobalSettingsDifficulty->ResumeLayout(false);
-			this->pnlSpawnOptions->ResumeLayout(false);
-			this->pnlSpawnOptions->PerformLayout();
 			this->pnlGameSpeed->ResumeLayout(false);
 			this->pnlGameSpeed->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBarGameSpeed))->EndInit();
+			this->pnlSpawnOptions->ResumeLayout(false);
+			this->pnlSpawnOptions->PerformLayout();
 			this->pnlGlobalSettingsLogo->ResumeLayout(false);
 			this->pnlGlobalSettingsLogo->PerformLayout();
 			this->ResumeLayout(false);
@@ -243,5 +262,12 @@ namespace Snake {
 		private: void OnStartInnerPanelsState();
 		public: void HideGlobalSettingsInnerPanel();
 		public: void ShowGlobalSettingsInnerPanel(String^ nameOfPanel);
+		public: void SetGameSpeed(int gameSpeed);
+		public: int GetGameSpeed();
+
+	private: System::Void pnlGlobalSettingsDifficulty_ParentChanged(System::Object^ sender, System::EventArgs^ e);
+	
+	private: System::Void btnSaveGameSpeed_Click(System::Object^ sender, System::EventArgs^ e);
+
 };
 }

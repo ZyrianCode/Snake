@@ -169,6 +169,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Zyrian\Game\Utilities\OptionsSaveSystem.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Options\Globals\Difficulty\Difficulty.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Options\Globals\Globals.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Options\Options.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Lists\Items.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Registry\CoinRegistry.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Registry\FruitRegistry.cpp" />
@@ -186,9 +190,14 @@
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Globals\GlobalsSettings.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\GameSettings\Visuals\VisualsSettings.cpp" />
     <ClCompile Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Options\Visuals\Visuals.cpp" />
     <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Zyrian\Game\Utilities\OptionsSaveSystem.h" />
+    <ClInclude Include="Src\Zyrian\Game\Options\Globals\Difficulty\Difficulty.h" />
+    <ClInclude Include="Src\Zyrian\Game\Options\Globals\Globals.h" />
+    <ClInclude Include="Src\Zyrian\Game\Options\Options.h" />
     <ClInclude Include="Src\Zyrian\Game\Lists\Items.h" />
     <ClInclude Include="Src\Zyrian\Game\Registry\CoinRegistry.h" />
     <ClInclude Include="Src\Zyrian\Game\Registry\FruitRegistry.h" />
@@ -229,6 +238,7 @@
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\Settings\Settings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Src\Zyrian\Game\Options\Visuals\Visuals.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Src\Zyrian\Game\Game.resx">
