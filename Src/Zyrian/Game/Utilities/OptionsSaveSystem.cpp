@@ -18,9 +18,9 @@ void Snake::OptionsSaveSystem::SetDefaultOptions()
 		BinaryFormatter^ formatter = gcnew BinaryFormatter();
 		formatter->Serialize(file, difficilty);
 	}
-	catch (FileNotFoundException^ fileNotFound)
+	catch (Exception^ ex)
 	{
-		throw fileNotFound;
+		file->Close();
 	}
 }
 
@@ -33,9 +33,9 @@ void Snake::OptionsSaveSystem::Save(Options^ options)
 		BinaryFormatter^ formatter = gcnew BinaryFormatter();
 		formatter->Serialize(file, options);
 	}
-	catch (FileNotFoundException^ fileNotFound)
+	catch (Exception^ ex)
 	{
-		throw fileNotFound;
+		file->Close();
 		SetDefaultOptions();
 	}
 	__finally

@@ -26,8 +26,8 @@ System::Void Snake::Settings::btnMenuSettings_Click(System::Object^ sender, Syst
 
 System::Void Snake::Settings::btnDoneSettings_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	Game^ game = gcnew Game();
-	if (game->IsRunning)
+	//Game^ game = gcnew Game();
+	if (Game::IsRunning)
 	{
 		this->Close();
 	}
@@ -41,8 +41,8 @@ System::Void Snake::Settings::btnDoneSettings_Click(System::Object^ sender, Syst
 
 System::Void Snake::Settings::btnBackSettings_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	Game^ game = gcnew Game();
-	if (game->IsRunning)
+	//Game^ game = gcnew Game();
+	if (Game::IsRunning)
 	{
 		this->Close();
 	}
