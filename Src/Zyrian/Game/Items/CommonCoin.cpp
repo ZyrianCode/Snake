@@ -3,6 +3,7 @@
 
 void Snake::CommonCoin::GenerateCommonCoin()
 {
+	Random^ rand = gcnew Random();
 	CommonCoinPos->X = rand->Next(10, 680 - 10);
 	CommonCoinPos->Y = rand->Next(10, 530 - 10);
 
@@ -20,7 +21,7 @@ void Snake::CommonCoin::GenerateCommonCoin()
 void Snake::CommonCoin::CheckCollisionWithSnake()
 {
 	Snake^ snake = gcnew Snake();
-	for (int i = 0; i < snake->gameStats->Score; i++)
+	for (int i = 0; i < snake->GetLength(); i++)
 	{
 		if (CommonCoinPos->X == snake->SnakeEntity[i]->Location.X &&
 			CommonCoinPos->Y == snake->SnakeEntity[i]->Location.Y)
@@ -30,10 +31,14 @@ void Snake::CommonCoin::CheckCollisionWithSnake()
 	}
 }
 
-void Snake::CommonCoin::AddBalance()
+int Snake::CommonCoin::AddBalance()
 {
-	Snake^ snake = gcnew Snake();
-	snake->gameStats->Balance += 5;
+	//Snake^ snake = gcnew Snake();
+	//GameStats^ gameStats = gcnew GameStats();
+	//gameStats->Balance += 5;
+	Random^ rand = gcnew Random();
+	int CoinsToAdd = rand->Next(5, 10);
+	return CoinsToAdd;
 }
 
 void Snake::CommonCoin::Initialize()

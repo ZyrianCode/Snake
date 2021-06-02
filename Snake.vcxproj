@@ -208,8 +208,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\Game\Items\CommonFruit.h" />
-    <ClInclude Include="Src\Zyrian\Game\Packets\MovePacket.h" />
-    <ClInclude Include="Src\Zyrian\Game\Packets\PacketSender\PacketHandler.h" />
     <ClInclude Include="Src\Zyrian\Game\Statistics\GameStats.h" />
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\About\About.h">
       <FileType>CppForm</FileType>

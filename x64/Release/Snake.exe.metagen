@@ -73,7 +73,6 @@ Class Snake.CommonFruit: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     System.Windows.Forms.PictureBox CommonFruitItem : Public
     Snake.Vector2 FruitPos : Public
-    System.Random rand : Public
   Methods:
     GenerateCommonFruit(): PrivateScope, Public, HideBySig
     CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
@@ -84,7 +83,6 @@ Class Snake.CommonCoin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     System.Windows.Forms.PictureBox CommonCoinItem : Public
     Snake.Vector2 CommonCoinPos : Public
-    System.Random rand : Public
   Methods:
     GenerateCommonCoin(): PrivateScope, Public, HideBySig
     CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
@@ -98,14 +96,8 @@ Class Snake.Items: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Snake.CommonCoin commonCoin : Public
 Class Snake.Snake: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Interfaces:
-    System.IDisposable
   Fields:
     System.Windows.Forms.PictureBox[] SnakeEntity : Public
-    Snake.Items items : Public
-    Snake.GameStats gameStats : Public
-    Boolean IsAnyObjectWasEaten : Public
-    Boolean WasBorderCollision : Public
     Int32 Step : Public
   Methods:
     Initialize(): PrivateScope, Public, HideBySig
@@ -117,10 +109,10 @@ Class Snake.Snake: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Move(): PrivateScope, Public, HideBySig
     Eat(): PrivateScope, Public, HideBySig
     SelfEat(): PrivateScope, Public, HideBySig
-    StartGrowth(): PrivateScope, Public, HideBySig
     GetDirection(): PrivateScope, Public, HideBySig
     SetOppositDirection(): PrivateScope, Public, HideBySig
-    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+    GetLength(): PrivateScope, Public, HideBySig
+    SetLength(Int32): PrivateScope, Public, HideBySig
 Class Snake.Game: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

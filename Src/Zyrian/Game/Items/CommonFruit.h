@@ -18,14 +18,13 @@ namespace Snake
 	public:
 		PictureBox^ CommonFruitItem = gcnew PictureBox();
 		Vector2^ FruitPos = gcnew Vector2();
-		Random^ rand = gcnew Random();
 		
 		void GenerateCommonFruit();
 		void CheckCollisionWithSnake();
 		void Initialize();
 		void Deconstruct();
 	private:
-
+		
 	};
 
 

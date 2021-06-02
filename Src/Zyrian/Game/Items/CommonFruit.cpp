@@ -3,7 +3,7 @@
 
 void Snake::CommonFruit::GenerateCommonFruit()
 {
-	//Game^ game = gcnew Game();
+	Random^ rand = gcnew Random();
 	FruitPos->X = rand->Next(8, 680 - 8);
 	FruitPos->Y = rand->Next(8, 530 - 8);
 	
@@ -16,15 +16,12 @@ void Snake::CommonFruit::GenerateCommonFruit()
 	FruitPos->Y -= tempY;
 
 	CommonFruitItem->Location = Point(FruitPos->X, FruitPos->Y);
-
-	//CommonFruit->Controls->Add(CommonFruitItem);
 }
 
 void Snake::CommonFruit::CheckCollisionWithSnake()
 {
-	//GameStats^ gameStats = gcnew GameStats();
 	Snake^ snake = gcnew Snake();
-	for (int i = 0; i < snake->gameStats->Score; i++)
+	for (int i = 0; i < snake->GetLength(); i++)
 	{
 		if (FruitPos->X == snake->SnakeEntity[i]->Location.X &&
 			FruitPos->Y == snake->SnakeEntity[i]->Location.Y)

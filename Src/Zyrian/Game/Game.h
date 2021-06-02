@@ -298,8 +298,7 @@ namespace Snake {
 
 	public: Vector2^ gameArea;
 	//Фрукты
-	//private: CommonFruit^ commonFruit = gcnew CommonFruit();
-	private: PictureBox^ superFruit;
+	//private: PictureBox^ superFruit;
 		
 	////Монеты
 	//private: PictureBox^ coin;
@@ -314,9 +313,10 @@ namespace Snake {
 	//private: PictureBox^ potionOfSpeed;
 	
 	private: Snake^ snake = gcnew Snake();
-	//private: //Options^ options = gcnew Options();
+	private: GameStats^ gameStats = gcnew GameStats();
+	private: Items^ items = gcnew Items();
 	private: OptionsSaveSystem^ optionsSaveSystem = gcnew OptionsSaveSystem();
-	//private: GlobalSettings^ globalSettings = gcnew GlobalSettings();
+
 	private: bool isDead;
 	private: bool isAlive;
 	private: bool isPlayable;
@@ -324,20 +324,19 @@ namespace Snake {
 	//private: int step = 10;
 	private: int updateInterval = 100;
 	private: int updateSpeed;
-	/*private: int score = 0;
-	private: int balance = 0;
-	private: int expirience = 0;*/
-	//private: GameStats^ gameStats = gcnew GameStats();
-	
+
+	/// <summary>
+	/// Позволяет запустить новую игру
+	/// </summary>
 	private: void NewGame();
 	private: void FirstLaunchCheck();
 	private: void RemoveObjects();
-	private: void IncreaseScore();
+	private: void ResetStatistics();
 	private: void Movement();
 	private: void Eating();
 	private: void SelfEating();
 	private: void GameOver();
-	private: void IntersectBorder();
+	private: void OnIntersectBorder();
 	private: void GenerateCommonFruits();
 	private: void ChangeSpeed();
 	private: System::Void GameForm_Update(System::Object^ sender, System::EventArgs^ e);

@@ -127,12 +127,6 @@
     <ClInclude Include="Src\Zyrian\Game\Additional\Vector2.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Zyrian\Game\Packets\MovePacket.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Zyrian\Game\Packets\PacketSender\PacketHandler.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Zyrian\Game\Statistics\GameStats.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>

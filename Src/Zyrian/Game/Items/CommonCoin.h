@@ -18,12 +18,10 @@ namespace Snake {
 		public:
 		PictureBox^ CommonCoinItem = gcnew PictureBox();
 		Vector2^ CommonCoinPos = gcnew Vector2();
-		Random^ rand = gcnew Random();
-		//Snake^ snake = gcnew Snake();
 
 		void GenerateCommonCoin();
 		void CheckCollisionWithSnake();
-		void AddBalance();
+		int AddBalance();
 		void Initialize();
 		void Deconstruct();
 	};

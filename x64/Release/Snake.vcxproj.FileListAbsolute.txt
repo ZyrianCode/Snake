@@ -1,4 +1,3 @@
-D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.vcxprojAssemblyReference.cache
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.Game.Game.resources
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.About.About.resources
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.Author.Author.resources
@@ -13,3 +12,4 @@ D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.Settings.GameSettings.Controls.ControlsSettings.resources
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.Settings.GameSettings.Globals.GlobalsSettings.resources
 D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.Src.Zyrian.GUI.MainGUI.Settings.GameSettings.Visuals.VisualsSettings.resources
+D:\Users\RyzenPC\Program\VisualStudio IDE\Projects\Application\Snake\x64\Release\Snake.vcxprojAssemblyReference.cache
