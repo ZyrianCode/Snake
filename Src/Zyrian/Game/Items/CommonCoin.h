@@ -18,7 +18,9 @@ namespace Snake {
 		public:
 		PictureBox^ CommonCoinItem = gcnew PictureBox();
 		Vector2^ CommonCoinPos = gcnew Vector2();
-
+		Timer^ TimeAlive = gcnew Timer();
+		bool isAbleToRemove;
+		void OnTimeAliveEnd(System::Object^ sender, System::EventArgs^ e);
 		void GenerateCommonCoin();
 		void CheckCollisionWithSnake();
 		int AddBalance();

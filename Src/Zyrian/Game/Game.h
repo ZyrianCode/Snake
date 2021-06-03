@@ -2,6 +2,7 @@
 #include "Entities/SnakeEntity.h"
 #include "Options/Options.h"
 #include "Utilities/OptionsSaveSystem.h"
+#include "Spawners/CommonCoinSpawner.h"
 //#include "Utilities/Settings/GlobalSettings.h"
 //#include "Items/CommonFruit.h"
 
@@ -51,7 +52,7 @@ namespace Snake {
 
 
 
-	private: System::Windows::Forms::Panel^ pnlGameArea;
+	public: System::Windows::Forms::Panel^ pnlGameArea;
 	private: Bunifu::Framework::UI::BunifuElipse^ bunifuGameFormElipse;
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGameTopSideLblDragControl;
 	private: Bunifu::Framework::UI::BunifuDragControl^ bunifuGameFormDragControl;
@@ -62,6 +63,8 @@ namespace Snake {
 	private: System::Windows::Forms::Label^ lblGameBalance;
 	private: System::Windows::Forms::Panel^ pnlGameOver;
 	private: System::Windows::Forms::Label^ lblGameOver;
+	private: System::Windows::Forms::Timer^ CommonCoinSpawnTimer;
+	private: System::Windows::Forms::Timer^ CommonCoinIdleTime;
 
 	private: System::ComponentModel::IContainer^ components;
 	protected:
@@ -99,6 +102,8 @@ namespace Snake {
 			this->GameTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->lblGameBalance = (gcnew System::Windows::Forms::Label());
 			this->lblGameExp = (gcnew System::Windows::Forms::Label());
+			this->CommonCoinSpawnTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->CommonCoinIdleTime = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pnlGameTopSide->SuspendLayout();
 			this->pnlGameArea->SuspendLayout();
 			this->pnlGameOver->SuspendLayout();
@@ -234,7 +239,7 @@ namespace Snake {
 			// 
 			// GameTimer
 			// 
-			this->GameTimer->Tick += gcnew System::EventHandler(this, &Game::GameForm_Update);
+			this->GameTimer->Tick += gcnew System::EventHandler(this, &Game::GameFormUpdate);
 			// 
 			// lblGameBalance
 			// 
@@ -261,6 +266,15 @@ namespace Snake {
 			this->lblGameExp->Size = System::Drawing::Size(78, 25);
 			this->lblGameExp->TabIndex = 8;
 			this->lblGameExp->Text = L"Exp: 0";
+			// 
+			// CommonCoinSpawnTimer
+			// 
+			this->CommonCoinSpawnTimer->Interval = 5000;
+			this->CommonCoinSpawnTimer->Tick += gcnew System::EventHandler(this, &Game::CommonCoinSpawnUpdate);
+			// 
+			// CommonCoinIdleTime
+			// 
+			this->CommonCoinIdleTime->Tick += gcnew System::EventHandler(this, &Game::OnCommonCoinIdleTimeEnd);
 			// 
 			// Game
 			// 
@@ -314,12 +328,15 @@ namespace Snake {
 	
 	private: Snake^ snake = gcnew Snake();
 	private: GameStats^ gameStats = gcnew GameStats();
-	private: Items^ items = gcnew Items();
+	//private: Items^ items = gcnew Items();
+	private: CommonCoinSpawner^ coinSpawner = gcnew CommonCoinSpawner();
 	private: OptionsSaveSystem^ optionsSaveSystem = gcnew OptionsSaveSystem();
 
 	private: bool isDead;
 	private: bool isAlive;
 	private: bool isPlayable;
+	private: bool isCommonCoinGenerable;
+	private: bool WasCommonCoinEaten;
 	private: bool firstLaunch;
 	//private: int step = 10;
 	private: int updateInterval = 100;
@@ -329,17 +346,56 @@ namespace Snake {
 	/// Позволяет запустить новую игру
 	/// </summary>
 	private: void NewGame();
+	/// <summary>
+	/// Проверяет игру на первый запуск
+	/// </summary>
 	private: void FirstLaunchCheck();
+	/// <summary>
+	/// Удаляет объекты на игровом поле
+	/// </summary>
 	private: void RemoveObjects();
+	/// <summary>
+	/// Стирает статистику (нужен для удаления статистики при перезапуске игры)
+	/// Входит в RemoveObjects()
+	/// </summary>
 	private: void ResetStatistics();
+	/// <summary>
+	/// Движение змейки
+	/// </summary>
 	private: void Movement();
+	/// <summary>
+	/// Поедание объектов змейкой
+	/// </summary>
 	private: void Eating();
+	/// <summary>
+	/// Отслеживает самопоедание змейки
+	/// </summary>
 	private: void SelfEating();
+	/// <summary>
+	/// Запускает состояние окончания игры
+	/// </summary>
 	private: void GameOver();
+	/// <summary>
+	/// Событие пересечения границ игрового поля
+	/// </summary>
 	private: void OnIntersectBorder();
+	/// <summary>
+	/// Генерирует фрукты
+	/// </summary>
 	private: void GenerateCommonFruits();
+	/// <summary>
+	/// Генерирует монеты
+	/// </summary>
+	private: void GenerateCommonCoin();
+	/// <summary>
+	/// Изменяет скорость обновления игры
+	/// </summary>
 	private: void ChangeSpeed();
-	private: System::Void GameForm_Update(System::Object^ sender, System::EventArgs^ e);
+	private: void OnAbleToAddCoin();
+	private: System::Void GameFormUpdate(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void CommonCoinSpawnUpdate(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void OnCommonCoinSpawn(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void OnCommonCoinIdleTimeEnd(System::Object^ sender, System::EventArgs^ e);
 };
 
 	
