@@ -38,6 +38,34 @@ Class Snake.Vector2: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     Int32 X : Public
     Int32 Y : Public
+Class Snake.SpeedPotion: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.PictureBox SpeedPotionBottle : Public
+    Snake.Vector2 SpeedPotionPos : Public
+    System.Windows.Forms.Timer TimeAlive : Public
+    System.Windows.Forms.Timer Duration : Public
+    Boolean isAbleToRemove : Public
+    Boolean isAbleToRemoveSpeedEffect : Public
+  Methods:
+    Initialize(): PrivateScope, Public, HideBySig
+    Deconstruct(): PrivateScope, Public, HideBySig
+    StartPotionEffectDuration(): PrivateScope, Public, HideBySig
+    OnTimeAliveEnd(Object, EventArgs): PrivateScope, Public, HideBySig
+    OnDurationEnd(Object, EventArgs): PrivateScope, Public, HideBySig
+    GenerateSpeedPotion(): PrivateScope, Public, HideBySig
+    CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
+    GetSpeedAmount(): PrivateScope, Public, HideBySig
+Class Snake.SpeedPotionSpawner: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Snake.SpeedPotion
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean isAbleToAdd : Public
+  Methods:
+    SpawnerInitialize(): PrivateScope, Public, HideBySig
+    SpawnSpeedPotions(): PrivateScope, Public, HideBySig
+    Pause(): PrivateScope, Public, HideBySig
+    Continue(): PrivateScope, Public, HideBySig
 Class Snake.GameStats: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
@@ -60,6 +88,7 @@ Class Snake.CommonFruit: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
     Initialize(): PrivateScope, Public, HideBySig
     Deconstruct(): PrivateScope, Public, HideBySig
+    GetSaturation(): PrivateScope, Public, HideBySig
 Class Snake.CommonCoin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
@@ -72,23 +101,64 @@ Class Snake.CommonCoin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     GenerateCommonCoin(): PrivateScope, Public, HideBySig
     CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
     AddBalance(): PrivateScope, Public, HideBySig
+    SetInterval(): PrivateScope, Public, HideBySig
     Initialize(): PrivateScope, Public, HideBySig
     Deconstruct(): PrivateScope, Public, HideBySig
 Class Snake.Items: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Snake.CommonFruit commonFruit : Public
-    Snake.CommonCoin commonCoin : Public
-Class Snake.CommonCoinSpawner: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :Snake.Items
+Class Snake.SnakeStatements: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
-    Boolean isAbleToAdd : Public
+    Int32 InvincibilityStatus : Public
+    Int32 HungerPeriodStatus : Public
+    Int32 HealthDecreasePeriodStatus : Public
+    Int32 HealPeriodStatus : Public
+  Methods:
+    StatementsRestart(): PrivateScope, Public, HideBySig
+    SetDefault(Int32): PrivateScope, Public, HideBySig
+    Activate(Int32): PrivateScope, Public, HideBySig
+    Deactivate(Int32): PrivateScope, Public, HideBySig
+Class Snake.Snake: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.PictureBox[] SnakeEntity : Public
+    System.Windows.Forms.Timer Invincibility : Public
+    System.Windows.Forms.Timer HungerPeriod : Public
+    System.Windows.Forms.Timer HealthDecreasePeriod : Public
+    System.Windows.Forms.Timer HealPeriod : Public
+    Snake.SnakeStatements snakeStatements : Public
+    Boolean isAlive : Public
+    Boolean isDead : Public
+    Single normalSpeed : Public
   Methods:
     Initialize(): PrivateScope, Public, HideBySig
-    SpawnCoins(): PrivateScope, Public, HideBySig
-    Pause(): PrivateScope, Public, HideBySig
-    Continue(): PrivateScope, Public, HideBySig
+    Deconstruct(): PrivateScope, Public, HideBySig
+    StartHungerResistancePeriod(): PrivateScope, Public, HideBySig
+    CheckStatements(): PrivateScope, Public, HideBySig
+    MoveForward(): PrivateScope, Public, HideBySig
+    MoveBackward(): PrivateScope, Public, HideBySig
+    MoveRight(): PrivateScope, Public, HideBySig
+    MoveLeft(): PrivateScope, Public, HideBySig
+    Move(): PrivateScope, Public, HideBySig
+    Eat(): PrivateScope, Public, HideBySig
+    SelfEat(): PrivateScope, Public, HideBySig
+    GetDirection(): PrivateScope, Public, HideBySig
+    SetOppositDirection(): PrivateScope, Public, HideBySig
+    AddSaturation(Single): PrivateScope, Public, HideBySig
+    DecreaseSaturation(Single): PrivateScope, Public, HideBySig
+    IncreaseSpeed(Single): PrivateScope, Public, HideBySig
+    DecreaseSpeed(Single): PrivateScope, Public, HideBySig
+    Heal(Single): PrivateScope, Public, HideBySig
+    TakeDamage(Single): PrivateScope, Public, HideBySig
+    HungerRestart(): PrivateScope, Public, HideBySig
+    StopSnakeTimers(): PrivateScope, Public, HideBySig
+    GetLength(): PrivateScope, Public, HideBySig
+    GetSpeed(): PrivateScope, Public, HideBySig
+    GetHealth(): PrivateScope, Public, HideBySig
+    GetSaturation(): PrivateScope, Public, HideBySig
+    SetLength(Int32): PrivateScope, Public, HideBySig
 Class Snake.Difficulty: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
@@ -107,25 +177,41 @@ Class Snake.OptionsSaveSystem: AutoLayout, AnsiClass, Class, Public, BeforeField
     SetDefaultOptions(): PrivateScope, Public, HideBySig
     Save(Options): PrivateScope, Public, HideBySig
     Load(): PrivateScope, Public, HideBySig
-Class Snake.Snake: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class Snake.CommonCoinSpawner: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Snake.CommonCoin
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
-    System.Windows.Forms.PictureBox[] SnakeEntity : Public
-    Int32 Step : Public
+    Boolean isAbleToAdd : Public
+  Methods:
+    SpawnerInitialize(): PrivateScope, Public, HideBySig
+    SpawnCoins(): PrivateScope, Public, HideBySig
+    Pause(): PrivateScope, Public, HideBySig
+    Continue(): PrivateScope, Public, HideBySig
+Class Snake.ExperienceBottle: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.PictureBox ExpBottle : Public
+    Snake.Vector2 ExpBottlePos : Public
+    System.Windows.Forms.Timer TimeAlive : Public
+    Boolean isAbleToRemove : Public
   Methods:
     Initialize(): PrivateScope, Public, HideBySig
+    OnTimeAliveEnd(Object, EventArgs): PrivateScope, Public, HideBySig
+    GenerateExperienceBottle(): PrivateScope, Public, HideBySig
+    CheckCollisionWithSnake(): PrivateScope, Public, HideBySig
+    AddAmountOfExperience(): PrivateScope, Public, HideBySig
+    SetInterval(): PrivateScope, Public, HideBySig
     Deconstruct(): PrivateScope, Public, HideBySig
-    MoveForward(): PrivateScope, Public, HideBySig
-    MoveBackward(): PrivateScope, Public, HideBySig
-    MoveRight(): PrivateScope, Public, HideBySig
-    MoveLeft(): PrivateScope, Public, HideBySig
-    Move(): PrivateScope, Public, HideBySig
-    Eat(): PrivateScope, Public, HideBySig
-    SelfEat(): PrivateScope, Public, HideBySig
-    GetDirection(): PrivateScope, Public, HideBySig
-    SetOppositDirection(): PrivateScope, Public, HideBySig
-    GetLength(): PrivateScope, Public, HideBySig
-    SetLength(Int32): PrivateScope, Public, HideBySig
+Class Snake.ExperienceBottleSpawner: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Snake.ExperienceBottle
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean isAbleToAdd : Public
+  Methods:
+    SpawnerInitialize(): PrivateScope, Public, HideBySig
+    SpawnExpBottles(): PrivateScope, Public, HideBySig
+    Pause(): PrivateScope, Public, HideBySig
+    Continue(): PrivateScope, Public, HideBySig
 Class Snake.Game: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -2,11 +2,10 @@
 
 #include "Src/Zyrian/Game/Items/CommonCoin.h"
 #include <math.h>
-void Snake::CommonCoinSpawner::Initialize()
+void Snake::CommonCoinSpawner::SpawnerInitialize()
 {
-    SpawnColdown->Interval = 5000;
-	SpawnColdown->Tick += gcnew System::EventHandler(this, &CommonCoinSpawner::GenerateCoins);
-    
+    SpawnColdown->Interval = 9000;
+	SpawnColdown->Tick += gcnew System::EventHandler(this, &CommonCoinSpawner::GenerateCoins);   
 }
 
 void Snake::CommonCoinSpawner::SpawnCoins()
@@ -17,12 +16,12 @@ void Snake::CommonCoinSpawner::SpawnCoins()
 void Snake::CommonCoinSpawner::Pause()
 {
     SpawnColdown->Stop();
-    commonCoin->TimeAlive->Stop();
+    TimeAlive->Stop();
 }
 
 void Snake::CommonCoinSpawner::Continue()
 {
-    commonCoin->TimeAlive->Start();
+    TimeAlive->Start();
     SpawnCoins();
 }
 
@@ -30,27 +29,13 @@ void Snake::CommonCoinSpawner::GenerateCoins(System::Object^ sender, System::Eve
 {
     Random^ rand = gcnew Random();
     int a = rand->Next(5, 11);
-    int NumToCompare = 10;
-    if ((log(a) + sin(a)) >= 1)
+    float NumToCompare = 1.00f;
+    if ((log(a) + sin(a)) >= NumToCompare)
     {
-       // items->commonCoin = gcnew CommonCoin();
         SpawnColdown->Stop();
-        //Items^ items = gcnew Items();
-        //CommonCoin^ commonCoin = gcnew CommonCoin();
-        //commonCoin->Initialize();
-        commonCoin->GenerateCommonCoin();
-       // ShouldSpawn += gcnew System::EventHandler(this, &Snake::CommonCoinSpawner::OnShouldSpawn);
+        GenerateCommonCoin();
         isAbleToAdd = true;
-        //SpawnAction(this, e);
-        //Game^ game = gcnew Game();
-        //game->pnlGameArea->Controls->Add(items->commonCoin->CommonCoinItem);
-        //pnlGameArea->Controls->Add(items->commonCoin->CommonCoinItem);
-        //isCommonCoinGenerable = true;
-        //CommonCoinIdleTime->Start();
     }
-    else
-    {
-        return;
-    }
+    else{ return; }
 }
 

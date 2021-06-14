@@ -92,6 +92,21 @@
     <ClCompile Include="Src\Zyrian\Game\Spawners\CommonCoinSpawner.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Zyrian\Game\Spawners\ExperienceBottleSpawner.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Zyrian\Game\Items\ExperienceBottle.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Zyrian\Game\Items\SpeedPotion.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Zyrian\Game\Items\HealingPotion.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Zyrian\Game\Spawners\SpeedPotionSpawner.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Zyrian\GUI\MainGUI\MainMenu\GUIMainMenu.h">
@@ -164,6 +179,21 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Src\Zyrian\Game\Spawners\CommonCoinSpawner.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\Game\Spawners\ExperienceBottleSpawner.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\Game\Items\ExperienceBottle.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\Game\Items\SpeedPotion.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\Game\Items\HealingPotion.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Zyrian\Game\Spawners\SpeedPotionSpawner.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

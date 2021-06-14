@@ -39,21 +39,72 @@ void Snake::CommonCoin::CheckCollisionWithSnake()
 
 int Snake::CommonCoin::AddBalance()
 {
-	//Snake^ snake = gcnew Snake();
-	//GameStats^ gameStats = gcnew GameStats();
-	//gameStats->Balance += 5;
 	Random^ rand = gcnew Random();
-	int CoinsToAdd = rand->Next(5, 10);
+	int CoinSize = CommonCoinItem->Width; //Поскольку монета квадрат - присваивать можно любой параметр из двух: длинна и ширина
+	int CoinsToAdd = 0;
+	switch (CoinSize)
+	{
+		case 12: case 13: case 14:
+			CoinsToAdd = rand->Next(5, 15);
+			break;
+		
+		case 15: case 16:
+			CoinsToAdd = rand->Next(16, 30);
+			break;
+		
+		case 17: case 18:
+			CoinsToAdd = rand->Next(31, 50);
+			break;
+		
+		case 19: case 20:
+			CoinsToAdd = rand->Next(51, 100);
+			break;
+	default:
+		break;
+	}
 	return CoinsToAdd;
+}
+
+int Snake::CommonCoin::SetInterval()
+{
+	int Interval = 0;
+	
+	int CoinSize = CommonCoinItem->Width;
+	switch (CoinSize)
+	{
+	case 12: case 13: case 14:
+		Interval = 15000;
+		break;
+
+	case 15: case 16:
+		Interval = 10000;
+		break;
+
+	case 17: case 18:
+		Interval = 8000;
+		break;
+
+	case 19: case 20:
+		Interval = 6500;
+		break;
+	default:
+		break;
+	}
+	return Interval;
 }
 
 void Snake::CommonCoin::Initialize()
 {
 	CommonCoinItem = gcnew PictureBox();
 	CommonCoinItem->BackColor = Color::FromArgb(196, 164, 55);
-	CommonCoinItem->Width = 12;
-	CommonCoinItem->Height = 12;
-	TimeAlive->Interval = 10000;
+
+	//Рандомно задаём Высоту и ширину монетки
+	Random^ rand = gcnew Random();
+	int RandAmount = rand->Next(12, 21);
+	CommonCoinItem->Width = RandAmount;
+	CommonCoinItem->Height = RandAmount;
+	
+	TimeAlive->Interval = SetInterval();
 	TimeAlive->Tick += gcnew System::EventHandler(this, &CommonCoin::OnTimeAliveEnd);
 	isAbleToRemove = false;
 }

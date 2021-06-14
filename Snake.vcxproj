@@ -169,6 +169,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Zyrian\Game\Spawners\SpeedPotionSpawner.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Items\HealingPotion.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Items\SpeedPotion.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Items\ExperienceBottle.cpp" />
+    <ClCompile Include="Src\Zyrian\Game\Spawners\ExperienceBottleSpawner.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Spawners\CommonCoinSpawner.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Utilities\OptionsSaveSystem.cpp" />
     <ClCompile Include="Src\Zyrian\Game\Options\Globals\Difficulty\Difficulty.cpp" />
@@ -195,6 +200,11 @@
     <ClCompile Include="x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Zyrian\Game\Spawners\SpeedPotionSpawner.h" />
+    <ClInclude Include="Src\Zyrian\Game\Items\HealingPotion.h" />
+    <ClInclude Include="Src\Zyrian\Game\Items\SpeedPotion.h" />
+    <ClInclude Include="Src\Zyrian\Game\Items\ExperienceBottle.h" />
+    <ClInclude Include="Src\Zyrian\Game\Spawners\ExperienceBottleSpawner.h" />
     <ClInclude Include="Src\Zyrian\Game\Spawners\CommonCoinSpawner.h" />
     <ClInclude Include="Src\Zyrian\Game\Utilities\OptionsSaveSystem.h" />
     <ClInclude Include="Src\Zyrian\Game\Options\Globals\Difficulty\Difficulty.h" />

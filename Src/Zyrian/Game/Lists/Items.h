@@ -7,6 +7,6 @@ namespace Snake {
 	public ref class Items
 	{
 		public: CommonFruit^ commonFruit = gcnew CommonFruit();
-		public: CommonCoin^ commonCoin = gcnew CommonCoin();
+		//public: CommonCoin^ commonCoin = gcnew CommonCoin();
 	};
 }

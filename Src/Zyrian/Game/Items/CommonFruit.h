@@ -23,8 +23,10 @@ namespace Snake
 		void CheckCollisionWithSnake();
 		void Initialize();
 		void Deconstruct();
+
+		float GetSaturation();
 	private:
-		
+		float _saturation = 2.5f;
 	};
 
 

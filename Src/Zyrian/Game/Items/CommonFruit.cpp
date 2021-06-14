@@ -37,10 +37,16 @@ void Snake::CommonFruit::Initialize()
 	CommonFruitItem->BackColor = Color::Yellow;
 	CommonFruitItem->Width = 10;
 	CommonFruitItem->Height = 10;
+	_saturation = 2.5f;
 }
 
 void Snake::CommonFruit::Deconstruct()
 {
 	CommonFruitItem->Visible = false;
 	CommonFruitItem = nullptr;
+}
+
+float Snake::CommonFruit::GetSaturation()
+{
+	return _saturation;
 }

@@ -3,6 +3,9 @@
 #include "Options/Options.h"
 #include "Utilities/OptionsSaveSystem.h"
 #include "Spawners/CommonCoinSpawner.h"
+#include "Spawners/ExperienceBottleSpawner.h"
+#include "Spawners/SpeedPotionSpawner.h"
+#include "Items/CommonCoin.h"
 //#include "Utilities/Settings/GlobalSettings.h"
 //#include "Items/CommonFruit.h"
 
@@ -65,6 +68,9 @@ namespace Snake {
 	private: System::Windows::Forms::Label^ lblGameOver;
 	private: System::Windows::Forms::Timer^ CommonCoinSpawnTimer;
 	private: System::Windows::Forms::Timer^ CommonCoinIdleTime;
+	private: System::Windows::Forms::Label^ lblSpeedPotionEffect;
+	private: System::Windows::Forms::Label^ lblSnakeHunger;
+	private: System::Windows::Forms::Label^ lblSnakeHealth;
 
 	private: System::ComponentModel::IContainer^ components;
 	protected:
@@ -104,6 +110,9 @@ namespace Snake {
 			this->lblGameExp = (gcnew System::Windows::Forms::Label());
 			this->CommonCoinSpawnTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->CommonCoinIdleTime = (gcnew System::Windows::Forms::Timer(this->components));
+			this->lblSnakeHealth = (gcnew System::Windows::Forms::Label());
+			this->lblSnakeHunger = (gcnew System::Windows::Forms::Label());
+			this->lblSpeedPotionEffect = (gcnew System::Windows::Forms::Label());
 			this->pnlGameTopSide->SuspendLayout();
 			this->pnlGameArea->SuspendLayout();
 			this->pnlGameOver->SuspendLayout();
@@ -270,11 +279,43 @@ namespace Snake {
 			// CommonCoinSpawnTimer
 			// 
 			this->CommonCoinSpawnTimer->Interval = 5000;
-			this->CommonCoinSpawnTimer->Tick += gcnew System::EventHandler(this, &Game::CommonCoinSpawnUpdate);
 			// 
-			// CommonCoinIdleTime
+			// lblSnakeHealth
 			// 
-			this->CommonCoinIdleTime->Tick += gcnew System::EventHandler(this, &Game::OnCommonCoinIdleTimeEnd);
+			this->lblSnakeHealth->AutoSize = true;
+			this->lblSnakeHealth->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lblSnakeHealth->ForeColor = System::Drawing::Color::Maroon;
+			this->lblSnakeHealth->Location = System::Drawing::Point(12, 52);
+			this->lblSnakeHealth->Name = L"lblSnakeHealth";
+			this->lblSnakeHealth->Size = System::Drawing::Size(144, 25);
+			this->lblSnakeHealth->TabIndex = 9;
+			this->lblSnakeHealth->Text = L"Health: 10.0";
+			// 
+			// lblSnakeHunger
+			// 
+			this->lblSnakeHunger->AutoSize = true;
+			this->lblSnakeHunger->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lblSnakeHunger->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lblSnakeHunger->Location = System::Drawing::Point(12, 87);
+			this->lblSnakeHunger->Name = L"lblSnakeHunger";
+			this->lblSnakeHunger->Size = System::Drawing::Size(133, 25);
+			this->lblSnakeHunger->TabIndex = 10;
+			this->lblSnakeHunger->Text = L"Hunger: 5.0";
+			// 
+			// lblSpeedPotionEffect
+			// 
+			this->lblSpeedPotionEffect->AutoSize = true;
+			this->lblSpeedPotionEffect->Font = (gcnew System::Drawing::Font(L"JetBrains Mono NL", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->lblSpeedPotionEffect->ForeColor = System::Drawing::Color::DarkTurquoise;
+			this->lblSpeedPotionEffect->Location = System::Drawing::Point(263, 61);
+			this->lblSpeedPotionEffect->Name = L"lblSpeedPotionEffect";
+			this->lblSpeedPotionEffect->Size = System::Drawing::Size(155, 25);
+			this->lblSpeedPotionEffect->TabIndex = 11;
+			this->lblSpeedPotionEffect->Text = L"Speed: Active";
 			// 
 			// Game
 			// 
@@ -283,6 +324,9 @@ namespace Snake {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(50)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(65)));
 			this->ClientSize = System::Drawing::Size(700, 700);
+			this->Controls->Add(this->lblSpeedPotionEffect);
+			this->Controls->Add(this->lblSnakeHunger);
+			this->Controls->Add(this->lblSnakeHealth);
 			this->Controls->Add(this->lblGameExp);
 			this->Controls->Add(this->lblGameBalance);
 			this->Controls->Add(this->lblGameCount);
@@ -328,12 +372,16 @@ namespace Snake {
 	
 	private: Snake^ snake = gcnew Snake();
 	private: GameStats^ gameStats = gcnew GameStats();
-	//private: Items^ items = gcnew Items();
+	private: Items^ items = gcnew Items();
 	private: CommonCoinSpawner^ coinSpawner = gcnew CommonCoinSpawner();
+	private: ExperienceBottleSpawner^ expBottleSpawner = gcnew ExperienceBottleSpawner();
+	private: SpeedPotionSpawner^ speedPotionSpawner = gcnew SpeedPotionSpawner();
 	private: OptionsSaveSystem^ optionsSaveSystem = gcnew OptionsSaveSystem();
-
-	private: bool isDead;
-	private: bool isAlive;
+	
+	private: CommonFruit^ commonFruit = gcnew CommonFruit();
+	private: CommonCoin^ commonCoin = gcnew CommonCoin();
+	private: bool isDead = snake->isDead;
+	private: bool isAlive = snake->isAlive;
 	private: bool isPlayable;
 	private: bool isCommonCoinGenerable;
 	private: bool WasCommonCoinEaten;
@@ -363,39 +411,61 @@ namespace Snake {
 	/// Движение змейки
 	/// </summary>
 	private: void Movement();
+		
 	/// <summary>
 	/// Поедание объектов змейкой
 	/// </summary>
 	private: void Eating();
+		
 	/// <summary>
 	/// Отслеживает самопоедание змейки
 	/// </summary>
 	private: void SelfEating();
+		
 	/// <summary>
 	/// Запускает состояние окончания игры
 	/// </summary>
 	private: void GameOver();
+		
 	/// <summary>
 	/// Событие пересечения границ игрового поля
 	/// </summary>
 	private: void OnIntersectBorder();
+		
 	/// <summary>
 	/// Генерирует фрукты
 	/// </summary>
 	private: void GenerateCommonFruits();
+		
 	/// <summary>
 	/// Генерирует монеты
 	/// </summary>
 	private: void GenerateCommonCoin();
+		
+	/// <summary>
+	/// Генерирует бутыльки опыта
+	/// </summary>
+	private: void GenerateExperienceBottle();
+
+	/// <summary>
+	/// Генерирует зелье скорости
+	/// </summary>
+	private: void GenerateSpeedPotion();
+		
 	/// <summary>
 	/// Изменяет скорость обновления игры
 	/// </summary>
 	private: void ChangeSpeed();
 	private: void OnAbleToAddCoin();
+	private: void OnAbleToRemoveCoin();
+	private: void OnAbleToAddExpBottle();
+	private: void OnAbleToRemoveExpBottle();
+	private: void OnAbleToAddSpeedPotion();
+	private: void OnAbleToRemoveSpeedPotion();
+
+	private: void SnakeHealthHungerUpdate();
+	
 	private: System::Void GameFormUpdate(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void CommonCoinSpawnUpdate(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void OnCommonCoinSpawn(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void OnCommonCoinIdleTimeEnd(System::Object^ sender, System::EventArgs^ e);
 };
 
 	

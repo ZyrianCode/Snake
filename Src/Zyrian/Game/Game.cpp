@@ -52,7 +52,6 @@ System::Void Snake::Game::GameOnInGameGui_Close(System::Object^ sender, System::
     InGameGUI^ inGameGUI = gcnew InGameGUI();
     if (inGameGUI->WasBackToMenuActive)
     {
-        //RemoveObjects();
         GameTimer->Stop();
         this->IsRunning = false;
 		this->Close();
@@ -68,6 +67,9 @@ System::Void Snake::Game::GameOnInGameGui_Close(System::Object^ sender, System::
         isPlayable = true;
         GameTimer->Start();
         coinSpawner->Continue();
+        expBottleSpawner->Continue();
+        speedPotionSpawner->Continue();
+        snake->CheckStatements();
     }
 }
 
@@ -75,20 +77,21 @@ void Snake::Game::NewGame()
 {
 	//Добавить проверку на первый запуск
     pnlGameOver->Visible = false;
-    FirstLaunchCheck();
+    FirstLaunchCheck(); 
 	
-	//Статистика
+	//Проверка на первый запуск
     ChangeSpeed();
     GameTimer->Start();
     
-    
-    coinSpawner->Initialize();
-	//coinSpawner->commonCoin->Initialize();
-
-    //CommonCoinSpawnTimer->Start();
+    //Инициализация спавнеров
+    coinSpawner->SpawnerInitialize();
+    expBottleSpawner->SpawnerInitialize();
+    speedPotionSpawner->SpawnerInitialize();
 	
+	//Инициализация статистики
     gameStats->Initialize();
-	//Создаём змейку и задаём свойства её головы
+	
+	//Инициализация змейки
     snake->Initialize();
 
 	//Добавляем змею на поле
@@ -96,30 +99,29 @@ void Snake::Game::NewGame()
 
 	//Генерация Фруктов и задания их свойств
     
+    //Запускаем генераторы
     GenerateCommonFruits();
-	
-    //Генерация Зелий и задания их свойств
-    //Генерация Бомб и задания их свойств
-    //Генерация Монет и задания их свойств
     GenerateCommonCoin();
-    //pnlGameArea->Controls->Add(items->commonCoin->CommonCoinItem);
-    //items->commonCoin->Initialize();
-    //items->commonCoin->GenerateCommonCoin();
-    //pnlGameArea->Controls->Add(items->commonCoin->CommonCoinItem);
-
-    //GameTimer->Interval = updateInterval;
+    GenerateExperienceBottle();
+    GenerateSpeedPotion();
 	
-	
+	//Состояния
     isPlayable = true;
-    isDead = false;
+    isDead = snake->isDead;
 
-	//Направление змейки
+	//Задаём первоначальное направление змейки
     snake->MoveForward();
     Eating();
+	
 	//При перезапуске игры счёт будет обнуляться
     lblGameBalance->Text = "Balance: 0";
     lblGameCount->Text = "Score: 0";
     lblGameExp->Text = "Exp: 0";
+
+    lblSnakeHealth->Text = "Health: " + snake->GetHealth();
+    lblSnakeHunger->Text = "Hunger: " + snake->GetSaturation();
+    lblSpeedPotionEffect->Text = "Speed: Active";
+    lblSpeedPotionEffect->Visible = false;
 }
 
 void Snake::Game::FirstLaunchCheck()
@@ -127,8 +129,6 @@ void Snake::Game::FirstLaunchCheck()
     if (!firstLaunch)
     {
         RemoveObjects();
-        //gameStats->Refresh();
-        //RemoveStats();
     }
     else
     {
@@ -138,16 +138,20 @@ void Snake::Game::FirstLaunchCheck()
 
 void Snake::Game::RemoveObjects()
 {
-    Controls->Remove(coinSpawner->commonFruit->CommonFruitItem);
-    Controls->Remove(coinSpawner->commonCoin->CommonCoinItem);
+    Controls->Remove(commonFruit->CommonFruitItem);
+    Controls->Remove(coinSpawner->CommonCoinItem);
+    Controls->Remove(expBottleSpawner->ExpBottle);
+    Controls->Remove(speedPotionSpawner->SpeedPotionBottle);
 	
     for (int i = 0; i <= snake->GetLength(); i++)
     {
         Controls->Remove(snake->SnakeEntity[i]);
     }
     snake->Deconstruct();
-    coinSpawner->commonFruit->Deconstruct();
-    coinSpawner->commonCoin->Deconstruct();
+    commonFruit->Deconstruct();
+    coinSpawner->Deconstruct();
+    expBottleSpawner->Deconstruct();
+    speedPotionSpawner->Deconstruct();
     ResetStatistics();
 }
 
@@ -174,7 +178,7 @@ void Snake::Game::Eating()
   //      pnlGameArea->Controls->Add(commonFruit->CommonFruitItem);
   //  }
     
-    if (snake->SnakeEntity[0]->Bounds.IntersectsWith(coinSpawner->commonFruit->CommonFruitItem->Bounds))
+    if (snake->SnakeEntity[0]->Bounds.IntersectsWith(commonFruit->CommonFruitItem->Bounds))
     {
         //++gameStats->Score;
         //gameStats->WasScoreChanged = true;
@@ -182,36 +186,33 @@ void Snake::Game::Eating()
         //StartGrowth();
         snake->SetLength(++gameStats->Score);
         snake->Eat();
+        snake->AddSaturation(commonFruit->GetSaturation());
+        snake->HungerRestart();
+        SnakeHealthHungerUpdate();
         pnlGameArea->Controls->Add(snake->SnakeEntity[snake->GetLength()]);
     	
         lblGameCount->Text = "Score: " + gameStats->Score;
     	
-        coinSpawner->commonFruit->Deconstruct();
+        commonFruit->Deconstruct();
     	
-        coinSpawner->commonFruit = gcnew CommonFruit();
-        coinSpawner->commonFruit->Initialize();
-        coinSpawner->commonFruit->GenerateCommonFruit();
-        pnlGameArea->Controls->Add(coinSpawner->commonFruit->CommonFruitItem);
+        commonFruit = gcnew CommonFruit();
+        GenerateCommonFruits();
     }
-    if (coinSpawner->commonCoin->CommonCoinItem != nullptr)
+    if (coinSpawner->CommonCoinItem != nullptr)
     {
-	    if (snake->SnakeEntity[0]->Bounds.IntersectsWith(coinSpawner->commonCoin->CommonCoinItem->Bounds))
+	    if (snake->SnakeEntity[0]->Bounds.IntersectsWith(coinSpawner->CommonCoinItem->Bounds))
 	    {
-	        gameStats->Balance += coinSpawner->commonCoin->AddBalance();
+	        gameStats->Balance += coinSpawner->AddBalance();
     		
 	        lblGameBalance->Text = "Balance: " + gameStats->Balance;
     		
-	        coinSpawner->commonCoin->Deconstruct();
-            if (coinSpawner->commonCoin->isAbleToRemove)
+            coinSpawner->Deconstruct();
+            if (coinSpawner->isAbleToRemove)
             {
-                pnlGameArea->Controls->Remove(coinSpawner->commonCoin->CommonCoinItem);
+                pnlGameArea->Controls->Remove(coinSpawner->CommonCoinItem);
             }
-            //isCommonCoinGenerable = false;
 			coinSpawner->isAbleToAdd = false;
             GenerateCommonCoin();
-
-           // CommonCoinIdleTime->Stop(); //Время ожидания 
-           // CommonCoinSpawnTimer->Start(); //Спавнер коинов
 	    	
 	        //GenerateCommonCoin();
 	        //items->commonCoin = gcnew CommonCoin();
@@ -219,6 +220,46 @@ void Snake::Game::Eating()
 	        //items->commonCoin->GenerateCommonCoin();
 	        //pnlGameArea->Controls->Add(items->commonCoin->CommonCoinItem);
 	    }
+    }
+    if (expBottleSpawner->ExpBottle != nullptr) {
+        if (snake->SnakeEntity[0]->Bounds.IntersectsWith(expBottleSpawner->ExpBottle->Bounds))
+        {
+            gameStats->Expirience += expBottleSpawner->AddAmountOfExperience();
+            lblGameExp->Text = "Exp: " + gameStats->Expirience;
+
+            expBottleSpawner->Deconstruct();
+            if (expBottleSpawner->isAbleToRemove)
+            {
+				expBottleSpawner->isAbleToAdd = false;
+                OnAbleToRemoveExpBottle();
+            }
+        }
+    }
+
+    if (speedPotionSpawner->SpeedPotionBottle != nullptr)
+    {
+        if (snake->SnakeEntity[0]->Bounds.IntersectsWith(speedPotionSpawner->SpeedPotionBottle->Bounds))
+        {
+            speedPotionSpawner->Deconstruct();
+            if (snake->GetSpeed() > snake->normalSpeed)
+            {
+                speedPotionSpawner->Duration->Stop();
+                speedPotionSpawner->StartPotionEffectDuration();
+                snake->IncreaseSpeed(speedPotionSpawner->GetSpeedAmount());
+            }
+            else
+            {
+                snake->IncreaseSpeed(speedPotionSpawner->GetSpeedAmount());
+                speedPotionSpawner->StartPotionEffectDuration();
+            }
+            lblSpeedPotionEffect->Visible = true;
+        	
+            if (speedPotionSpawner->isAbleToRemove)
+            {
+				speedPotionSpawner->isAbleToAdd = false;
+                OnAbleToRemoveSpeedPotion();
+            }
+        }
     }
    // snake->Eat();
   //  if (snake->IsAnyObjectWasEaten)
@@ -243,32 +284,35 @@ void Snake::Game::Eating()
 void Snake::Game::SelfEating()
 {
     if (snake->SelfEat()) 
-    { GameOver(); }
+    {
+        snake->isDead = true;
+    	GameOver();
+    }
 }
 
 void Snake::Game::GameOver()
 {
     isPlayable = true;
-    isDead = true;
+    isDead = snake->isDead;
     pnlGameOver->Visible = true;
 }
 
 
 void Snake::Game::OnIntersectBorder()
 {
-    if (snake->SnakeEntity[0]->Location.X == 0)
+    if (snake->SnakeEntity[0]->Location.X <= 0)
     {
         snake->SnakeEntity[0]->Location = Point(680, snake->SnakeEntity[0]->Location.Y);
     }
-    else if (snake->SnakeEntity[0]->Location.X == 680)
+    else if (snake->SnakeEntity[0]->Location.X >= 680)
     {
         snake->SnakeEntity[0]->Location = Point(0, snake->SnakeEntity[0]->Location.Y);
     }
-    else if (snake->SnakeEntity[0]->Location.Y == 0)
+    else if (snake->SnakeEntity[0]->Location.Y <= 0)
     {
         snake->SnakeEntity[0]->Location = Point(snake->SnakeEntity[0]->Location.X, 530);
     }
-    else if (snake->SnakeEntity[0]->Location.Y == 530)
+    else if (snake->SnakeEntity[0]->Location.Y >= 530)
     {
         snake->SnakeEntity[0]->Location = Point(snake->SnakeEntity[0]->Location.X, 0);
     }
@@ -276,34 +320,27 @@ void Snake::Game::OnIntersectBorder()
 
 void Snake::Game::GenerateCommonFruits()
 {
-    coinSpawner->commonFruit->Initialize();
-    coinSpawner->commonFruit->GenerateCommonFruit();
-    pnlGameArea->Controls->Add(coinSpawner->commonFruit->CommonFruitItem);
+    commonFruit->Initialize();
+    commonFruit->GenerateCommonFruit();
+    pnlGameArea->Controls->Add(commonFruit->CommonFruitItem);
 }
 
 void Snake::Game::GenerateCommonCoin()
 {
-    //Random^ rand = gcnew Random();
-    //int a = rand->Next(5, 11);
-    //int NumToCompare = 10;
-    //if ((log(a) + sin(a)) >= 1)
-    //{
-    //   // items->commonCoin = gcnew CommonCoin();
-	   // items->commonCoin->Initialize();
-	   // items->commonCoin->GenerateCommonCoin();
-	   // pnlGameArea->Controls->Add(items->commonCoin->CommonCoinItem);
-    //    isCommonCoinGenerable = true;
-    //    CommonCoinSpawnTimer->Stop();
-    //    CommonCoinIdleTime->Start();
-    //}
-    //else
-    //{
-    //    return;
-    //}
-    //coinSpawner->Initialize();
-    coinSpawner->commonCoin->Initialize();
+    coinSpawner->Initialize();
     coinSpawner->SpawnCoins();
+}
 
+void Snake::Game::GenerateExperienceBottle()
+{
+    expBottleSpawner->Initialize();
+    expBottleSpawner->SpawnExpBottles();
+}
+
+void Snake::Game::GenerateSpeedPotion()
+{
+    speedPotionSpawner->Initialize();
+    speedPotionSpawner->SpawnSpeedPotions();
 }
 
 void Snake::Game::ResetStatistics()
@@ -326,63 +363,107 @@ void Snake::Game::ChangeSpeed()
 
 void Snake::Game::OnAbleToAddCoin()
 {
-    pnlGameArea->Controls->Add(coinSpawner->commonCoin->CommonCoinItem);
+    pnlGameArea->Controls->Add(coinSpawner->CommonCoinItem);
     coinSpawner->isAbleToAdd = false;
 }
 
+void Snake::Game::OnAbleToRemoveCoin()
+{
+    pnlGameArea->Controls->Remove(coinSpawner->CommonCoinItem);
+    GenerateCommonCoin();
+}
+
+void Snake::Game::OnAbleToAddExpBottle()
+{
+    pnlGameArea->Controls->Add(expBottleSpawner->ExpBottle);
+    expBottleSpawner->isAbleToAdd = false;
+}
+
+void Snake::Game::OnAbleToRemoveExpBottle()
+{
+    pnlGameArea->Controls->Remove(expBottleSpawner->ExpBottle);
+    GenerateExperienceBottle();
+}
+
+void Snake::Game::OnAbleToAddSpeedPotion()
+{
+    pnlGameArea->Controls->Add(speedPotionSpawner->SpeedPotionBottle);
+    speedPotionSpawner->isAbleToAdd = false;
+}
+
+void Snake::Game::OnAbleToRemoveSpeedPotion()
+{
+    pnlGameArea->Controls->Remove(speedPotionSpawner->SpeedPotionBottle);
+    GenerateSpeedPotion();
+}
+
+void Snake::Game::SnakeHealthHungerUpdate()
+{
+    lblSnakeHealth->Text = "Health: " + snake->GetHealth();
+    lblSnakeHunger->Text = "Hunger: " + snake->GetSaturation();
+}
+
+
 System::Void Snake::Game::GameFormUpdate(System::Object^ sender, System::EventArgs^ e)
 {
+	isDead = snake->isDead;
     if (!isDead && isPlayable) //BAD CODE
     {
         Movement();
+        SnakeHealthHungerUpdate();
     	Eating();
     	SelfEating();
     	OnIntersectBorder();
+    	
         if (coinSpawner->isAbleToAdd)
         {
             OnAbleToAddCoin();
-            
         }
-        if (coinSpawner->commonCoin->isAbleToRemove)
+        if (coinSpawner->isAbleToRemove)
         {
-            pnlGameArea->Controls->Remove(coinSpawner->commonCoin->CommonCoinItem);
-            //coinSpawner->commonCoin->isAbleToRemove = false;
-            GenerateCommonCoin();
+            OnAbleToRemoveCoin();
         }
-        //GenerateCommonCoin();
+
+        if (expBottleSpawner->isAbleToAdd)
+        {
+            OnAbleToAddExpBottle();
+        }
+        if (expBottleSpawner->isAbleToRemove)
+        {
+            OnAbleToRemoveExpBottle();
+        }
+    	
+    	if (speedPotionSpawner->isAbleToAdd)
+        {
+            OnAbleToAddSpeedPotion();
+        }
+        if (speedPotionSpawner->isAbleToRemove)
+        {
+            OnAbleToRemoveSpeedPotion();
+        }
+        if (speedPotionSpawner->isAbleToRemoveSpeedEffect)
+        {
+            snake->DecreaseSpeed(speedPotionSpawner->GetSpeedAmount());
+            speedPotionSpawner->isAbleToRemoveSpeedEffect = false;
+            lblSpeedPotionEffect->Visible = false;
+        }
     }
     else if (isDead && isPlayable)
     {
         GameTimer->Stop();
-    	    	
+        coinSpawner->Pause();
+        expBottleSpawner->Pause();
+        speedPotionSpawner->Pause();
+        snake->StopSnakeTimers();
+    	
+        pnlGameOver->Visible = true;
     }
     else if (!isDead && !isPlayable)
     {
         GameTimer->Stop();
         coinSpawner->Pause();
-    	
+        expBottleSpawner->Pause();
+        speedPotionSpawner->Pause();
+        snake->StopSnakeTimers();
     }
 }
-
-System::Void Snake::Game::CommonCoinSpawnUpdate(System::Object^ sender, System::EventArgs^ e)
-{
-    //GenerateCommonCoin();
-}
-
-System::Void Snake::Game::OnCommonCoinSpawn(System::Object^ sender, System::EventArgs^ e)
-{
-    //pnlGameArea->Controls->Add(items->commonCoin->CommonCoinItem);
-	
-}
-
-System::Void Snake::Game::OnCommonCoinIdleTimeEnd(System::Object^ sender, System::EventArgs^ e)
-{
-
-   /* items->commonCoin->Deconstruct();
-
-    CommonCoinIdleTime->Stop();
-    isCommonCoinGenerable = false;
-    CommonCoinSpawnTimer->Start();*/
-	
-}
-
