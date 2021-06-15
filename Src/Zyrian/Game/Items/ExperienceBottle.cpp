@@ -58,6 +58,7 @@ int Snake::ExperienceBottle::AddAmountOfExperience()
 	Random^ rand = gcnew Random();
 	int ExpBottleSize = ExpBottle->Width; //Поскольку монета квадрат - присваивать можно любой параметр из двух: длинна и ширина
 	int AmountOfExperienceToAdd = 0;
+	
 	switch (ExpBottleSize)
 	{
 	case 12: case 13: case 14:

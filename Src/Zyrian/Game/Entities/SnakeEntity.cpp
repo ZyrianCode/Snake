@@ -108,29 +108,6 @@ void Snake::Snake::Move()
 void Snake::Snake::Eat()
 {
 	StartGrowth();
-	//if (SnakeEntity[0]->Bounds.IntersectsWith(/*items->commonFruit->CommonFruitItem->Bounds*/))
-	//{
-	//	++gameStats->Score;
-	//	gameStats->WasScoreChanged = true;
-	//	IsAnyObjectWasEaten = true;
-	//	StartGrowth();
-	//	items->commonFruit->Deconstruct();
-	//	items->commonFruit = gcnew CommonFruit();
-	//	items->commonFruit->Initialize();
-	//	items->commonFruit->GenerateCommonFruit();
-	//}
-	////if ((SnakeEntity[0]->Location.X == items->commonCoin->CommonCoinPos->X) &&
-	//	//(SnakeEntity[0]->Location.Y == items->commonCoin->CommonCoinPos->Y))
-	//if (SnakeEntity[0]->Bounds.IntersectsWith(items->commonCoin->CommonCoinItem->Bounds))
-	//{
-	//	gameStats->Balance += 5;
-	//	gameStats->WasBalanceChanged = true;
-	//	IsAnyObjectWasEaten = true;
-	//	items->commonCoin->Deconstruct();
-	//	items->commonCoin = gcnew CommonCoin();
-	//	items->commonCoin->Initialize();
-	//	items->commonCoin->GenerateCommonCoin();
-	//}
 }
 
 bool Snake::Snake::SelfEat()
@@ -242,7 +219,6 @@ void Snake::Snake::AddSaturation(float saturationToAdd)
 {
 	if (saturationToAdd <= 0.0f){ saturationToAdd = 2.0f; }
 	
-	//if (_saturation <= _minSaturation){}
 	if (_saturation + saturationToAdd >= _maxSaturation)
 	{
 		_saturation = _maxSaturation;
@@ -295,7 +271,6 @@ void Snake::Snake::Heal(float healthAmount)
 {
 	if (healthAmount <= 0.0f) { healthAmount = 2.0f; }
 
-	//if (_health <= _minHealth) {}
 	else if (_health + healthAmount >= _maxHealth)
 	{
 		_health = _maxHealth;

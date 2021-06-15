@@ -16,17 +16,26 @@ namespace Snake
 	public ref class CommonFruit
 	{
 	public:
-		PictureBox^ CommonFruitItem = gcnew PictureBox();
-		Vector2^ FruitPos = gcnew Vector2();
-		
+		PictureBox^ CommonFruitItem = gcnew PictureBox(); //Сам фрукт
+		Vector2^ FruitPos = gcnew Vector2(); //Позиция фрукта
+
+		//Генерирует фрукт
 		void GenerateCommonFruit();
+		
+		//Проверяет коллизию с позицией змейки на поле (Если коллизия есть, объект будет сгенерирован в другом месте)
 		void CheckCollisionWithSnake();
+
+		//Метод для инициализации свойств фрукта
 		void Initialize();
+
+		//Метод для уничтожения фрукта
 		void Deconstruct();
 
+		//Возвращает насыщение
 		float GetSaturation();
+	
 	private:
-		float _saturation = 2.5f;
+		float _saturation = 2.5f; //Насыщение
 	};
 
 

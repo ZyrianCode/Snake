@@ -17,11 +17,10 @@ Snake::Game::Game(void)
 System::Void Snake::Game::Game_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
 {
     InGameGUI^ inGameGUI = gcnew InGameGUI();
-    if (!inGameGUI->isInGameGUIVisible /*&& isPlayable && !isDead */&& e->KeyCode.ToString() == "Escape")
+    if (!inGameGUI->isInGameGUIVisible && e->KeyCode.ToString() == "Escape")
     {
         isPlayable = false;
         inGameGUI->Show();
-        //GlobalSettings^ globalSettings = gcnew GlobalSettings();
     }
     else if (inGameGUI->isInGameGUIVisible && e->KeyCode.ToString() == "Escape")
     {
@@ -75,11 +74,12 @@ System::Void Snake::Game::GameOnInGameGui_Close(System::Object^ sender, System::
 
 void Snake::Game::NewGame()
 {
-	//Добавить проверку на первый запуск
     pnlGameOver->Visible = false;
-    FirstLaunchCheck(); 
 	
-	//Проверка на первый запуск
+    //Проверка на первый запуск
+    FirstLaunchCheck(); 	
+
+	//Изменение скорости игры
     ChangeSpeed();
     GameTimer->Start();
     
@@ -96,8 +96,6 @@ void Snake::Game::NewGame()
 
 	//Добавляем змею на поле
 	pnlGameArea->Controls->Add(snake->SnakeEntity[0]);
-
-	//Генерация Фруктов и задания их свойств
     
     //Запускаем генераторы
     GenerateCommonFruits();
@@ -161,29 +159,9 @@ void Snake::Game::Movement()
 }
 
 void Snake::Game::Eating()
-{
-  //  if (snake->SnakeEntity[0]->Location.X == commonFruit->FruitPos->X && snake->SnakeEntity[0]->Location.Y == commonFruit->FruitPos->Y)
-  //  {
-  //      ++snake->gameStats->Score;
-  //      snake->SnakeEntity[snake->gameStats->Score] = gcnew PictureBox();
-  //      snake->SnakeEntity[snake->gameStats->Score]->Location = Point(snake->SnakeEntity[snake->gameStats->Score-1]->Location.X + snake->Step * snake->direction->X, snake->SnakeEntity[snake->gameStats->Score-1]->Location.Y - snake->Step * snake->direction->Y);
-  //      snake->SnakeEntity[snake->gameStats->Score]->BackColor = Color::FromArgb(55, 120, 86);
-  //      snake->SnakeEntity[snake->gameStats->Score]->Width = snake->Step;
-  //      snake->SnakeEntity[snake->gameStats->Score]->Height = snake->Step;
-		//pnlGameArea->Controls->Add(snake->SnakeEntity[snake->gameStats->Score]);
-  //      commonFruit->Deconstruct();
-		//commonFruit = gcnew CommonFruit();
-  //      commonFruit->GenerateCommonFruit();
-  //      commonFruit->Initialize();
-  //      pnlGameArea->Controls->Add(commonFruit->CommonFruitItem);
-  //  }
-    
+{   
     if (snake->SnakeEntity[0]->Bounds.IntersectsWith(commonFruit->CommonFruitItem->Bounds))
     {
-        //++gameStats->Score;
-        //gameStats->WasScoreChanged = true;
-        //IsAnyObjectWasEaten = true;
-        //StartGrowth();
         snake->SetLength(++gameStats->Score);
         snake->Eat();
         snake->AddSaturation(commonFruit->GetSaturation());
@@ -212,13 +190,7 @@ void Snake::Game::Eating()
                 pnlGameArea->Controls->Remove(coinSpawner->CommonCoinItem);
             }
 			coinSpawner->isAbleToAdd = false;
-            GenerateCommonCoin();
-	    	
-	        //GenerateCommonCoin();
-	        //items->commonCoin = gcnew CommonCoin();
-	       // items->commonCoin->Initialize();
-	        //items->commonCoin->GenerateCommonCoin();
-	        //pnlGameArea->Controls->Add(items->commonCoin->CommonCoinItem);
+            GenerateCommonCoin();	    	
 	    }
     }
     if (expBottleSpawner->ExpBottle != nullptr) {

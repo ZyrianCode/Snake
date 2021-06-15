@@ -12,13 +12,25 @@ namespace Snake {
 	
 	public ref class ExperienceBottleSpawner : ExperienceBottle
 	{
-	public: bool isAbleToAdd;
-	public: void SpawnerInitialize();
-	public: void SpawnExpBottles();
-	public: void Pause();
-	public: void Continue();
-	private: void GenerateExpBottles(System::Object^ sender, System::EventArgs^ e);
-	private: Timer^ SpawnColdown = gcnew Timer();
+		public: bool isAbleToAdd; //Позволяет определять возможно ли добавить объект на игровое поле
+
+		//Метод инициализирующий свойства спавнера (задержку спавна)
+		public: void SpawnerInitialize();
+
+		//Запускает задержку спавна, после чего начинается генерация бутыльков опыта
+		public: void SpawnExpBottles();
+
+		//Замораживает задержку и останавливает течение времени жизни объекта, который генерируется спавнером
+		public: void Pause();
+			
+		//Возобновляет течение времени жизни объекта и запускает задержку спавна, после чего начинается генерация бутыльков с опытом
+		public: void Continue();
+			
+		//Генерирует бутыльки опыта в соответствии с математической формулой
+		private: void GenerateExpBottles(System::Object^ sender, System::EventArgs^ e);
+
+		//Задержка (Перезарядка спавнера)
+		private: Timer^ SpawnColdown = gcnew Timer();
 		
 	};
 }

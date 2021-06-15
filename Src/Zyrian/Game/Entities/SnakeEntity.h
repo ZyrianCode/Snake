@@ -34,7 +34,7 @@ namespace Snake {
 	public ref class Snake
 	{
 	public:
-		array<PictureBox^>^ SnakeEntity;
+		array<PictureBox^>^ SnakeEntity; //Змейка
 
 		Timer^ Invincibility = gcnew Timer(); //Неуязвимость от голода
 		Timer^ HungerPeriod = gcnew Timer(); //Голод
@@ -42,12 +42,12 @@ namespace Snake {
 		
 		Timer^ HealPeriod = gcnew Timer(); //Регенерация
 		
-		SnakeStatements^ snakeStatements = gcnew SnakeStatements(); //
+		SnakeStatements^ snakeStatements = gcnew SnakeStatements(); 
 		
 		bool isAlive; //Состояние жизни змейки
-		bool isDead; //Состояние смерти
+		bool isDead; //Состояние смерти змейки
 
-		float normalSpeed = _normalSpeed;
+		float normalSpeed = _normalSpeed; //Обычная скорость передвижения змейки
 		
 		void Initialize(); 
 		void Deconstruct();
@@ -58,13 +58,22 @@ namespace Snake {
 		//Проверяет состояния негативных эффектов голода (нужна для проверки после паузы)
 		void CheckStatements();
 		
+		//Методы изменения направления змейки
+		//Направляет вперёд
 		void MoveForward();
+		//Направляет назад
 		void MoveBackward();
+		//Направляет вправо
 		void MoveRight();
+		//Направляет влево
 		void MoveLeft();
+		//Позволяет передвигаться
 		void Move();
-		
+
+		//Позволяет есть
 		void Eat();
+
+		//Позволяет самоуничтожиться
 		bool SelfEat();
 
 		Vector2^ GetDirection();

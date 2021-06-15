@@ -23,10 +23,10 @@ void main(array<String^>^ args) {
 
 System::Void Snake::GUIMainMenu::btnMainMenuStartGame_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	Game^ game = gcnew Game();
-	game->Show();
-	game->IsRunning = true;
-	this->Hide();
+	Game^ game = gcnew Game(); 
+	game->Show(); //Показывает форму игры
+	game->IsRunning = true; //Устанавливаем состояние игры "запущена"
+	this->Hide(); //Скрываем форму
 }
 
 System::Void Snake::GUIMainMenu::btnMainMenuSettings_Click(System::Object^ sender, System::EventArgs^ e)
@@ -52,6 +52,6 @@ System::Void Snake::GUIMainMenu::btnMainMenuAuthor_Click(System::Object^ sender,
 
 System::Void Snake::GUIMainMenu::btnMainMenuQuit_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	Application::Exit();
+	Application::Exit(); //Выход из всего приложения
 }
 
